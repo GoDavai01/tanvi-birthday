@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="TANVI DAY 💜">
+<meta property="og:description" content="Ek chhota sa surprise hai. Kholo aur dekho.">
+<title>Happy Birthday Tanvi 💜</title>
+<style>
+  /* ============ TOKENS — Concert Night (deliberate single-theme) ============ */
+  :root{
+    --bg:#07030F;
+    --bg2:#160B28;
+    --surface:#221338;
+    --surface2:#2C1A47;
+    --text:#EADDF7;
+    --dim:#B9A5D9;
+    --accent:#A855F7;
+    --accent-soft:#C4B5FD;
+    --gold:#FFC94A;
+    --pink:#E9B8FF;
+    --ink:#3B1E6E;
+    --paper:#F5EFFC;
+    --display:'Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
+    --body:'Segoe UI',system-ui,-apple-system,sans-serif;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  html{touch-action:manipulation;-webkit-text-size-adjust:100%}
+  html,body{background:var(--bg);color:var(--text);font-family:var(--body);margin:0;min-height:100%}
+  *{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
+  button{font-family:inherit;color:inherit}
+
+  /* ============ ACTS ============ */
+  .act{display:none;min-height:100vh;min-height:100dvh;flex-direction:column;align-items:center;justify-content:center;
+       padding:76px 22px 44px;text-align:center;position:relative;overflow:hidden;z-index:1}
+  .act.active{display:flex}
+  .eyebrow{font:italic 500 13px/1.3 Georgia,'Times New Roman',serif;letter-spacing:.3em;color:var(--accent-soft);text-transform:uppercase;margin-bottom:14px}
+  .eyebrow b{color:var(--gold);font-weight:700;font-style:normal}
+  h1,h2{font-family:var(--display);font-weight:900;text-wrap:balance;line-height:.98;margin:0 0 12px;letter-spacing:-.02em}
+  h1{font-size:clamp(46px,13.5vw,96px);
+     background:linear-gradient(110deg,#F5EAFE 0%,#E9D5FF 18%,#A855F7 32%,#FDE68A 50%,#A855F7 68%,#E9D5FF 82%,#F5EAFE 100%);
+     background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+     animation:shimmer 8s linear infinite}
+  @keyframes shimmer{to{background-position:-250% 0}}
+  h2{font-size:clamp(28px,8vw,46px);
+     background:linear-gradient(180deg,#F7F0FF 20%,#C9AFF2 100%);
+     -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+  /* ============ AMBIENT LAYERS ============ */
+  .aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(55% 40% at 18% 8%, rgba(124,58,237,.28), transparent 70%),
+      radial-gradient(45% 35% at 85% 22%, rgba(217,70,239,.16), transparent 70%),
+      radial-gradient(60% 45% at 50% 105%, rgba(76,29,149,.35), transparent 72%);
+    animation:drift 40s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate3d(3%,-2%,0) scale(1.06)}}
+  #skyfx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .beams{position:fixed;inset:-30% 0 0 0;z-index:0;pointer-events:none;opacity:.45;mix-blend-mode:screen;
+    background:
+      conic-gradient(from 168deg at 20% 0%,transparent 0 8deg,rgba(168,85,247,.10) 12deg,transparent 20deg),
+      conic-gradient(from 195deg at 80% 0%,transparent 0 8deg,rgba(217,70,239,.08) 12deg,transparent 20deg);
+    transform-origin:50% 0;animation:beamsway 18s ease-in-out infinite alternate}
+  @keyframes beamsway{to{transform:rotate(2.5deg)}}
+  .veil{position:fixed;inset:0;z-index:52;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 12%,transparent 55%,rgba(3,1,8,.55) 100%)}
+  .grain{position:fixed;inset:0;z-index:53;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.6'/></svg>")}
+
+  /* ============ REVEAL CASCADE ============ */
+  .rv{opacity:0;transform:translateY(22px);
+      transition:opacity .7s cubic-bezier(.22,1,.36,1) var(--rd,.1s),transform .7s cubic-bezier(.22,1,.36,1) var(--rd,.1s)}
+  .act.active .rv{opacity:1;transform:none}
+  .act:not(.active) .rv{transition:none}
+  .sub{color:var(--dim);font-size:15px;max-width:34ch;margin:0 auto 8px;line-height:1.55}
+  .hint{color:var(--dim);font-size:13px;margin-top:18px;opacity:.85}
+
+  .pressable{transition:transform 80ms ease}
+  .pressable:active{transform:scale(.96)}
+  .cta{margin-top:26px;border:0;border-radius:999px;padding:16px 30px;font-size:16px;font-weight:700;cursor:pointer;
+       position:relative;overflow:hidden;letter-spacing:.03em;color:#FBF7FF;
+       background:linear-gradient(135deg,#7C3AED,#A855F7 45%,#D946EF);
+       box-shadow:0 10px 30px -10px rgba(168,85,247,.6),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 6px rgba(76,29,149,.5);
+       opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+  .cta::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);
+       background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+       animation:sweep 4.5s ease-in-out infinite}
+  @keyframes sweep{0%,70%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(400%) skewX(-20deg)}}
+  .cta.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .cta.show:active{transform:translateY(0) scale(.96);transition:transform 80ms ease}
+  .cta:focus-visible,.pressable:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  /* ============ SETLIST BAR ============ */
+  #setlist{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:40;display:flex;gap:2px;
+           background:rgba(22,11,40,.82);border:1px solid rgba(196,181,253,.22);border-radius:999px;padding:4px 10px;backdrop-filter:blur(6px)}
+  #setlist span{width:34px;height:34px;display:grid;place-items:center;font-size:16px;filter:grayscale(1) opacity(.35)}
+  #setlist span.done{filter:none}
+  #setlist span.pop{animation:slPop .3s ease}
+  @keyframes slPop{50%{transform:scale(1.4)}}
+
+  /* ============ ACT 1 — ARMY BOMB ============ */
+  #bomb-zone{--charge:0;position:relative;margin-top:26px;width:200px;height:280px;cursor:pointer;border:0;background:none;padding:0;user-select:none}
+  .bomb-glow{position:absolute;left:50%;top:70px;width:340px;height:340px;transform:translate(-50%,-50%) scale(calc(.55 + var(--charge)*.25));
+             background:radial-gradient(closest-side,rgba(168,85,247,.85),rgba(168,85,247,.25) 55%,transparent 72%);
+             opacity:calc(var(--charge)*.33);transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+  .bomb-sphere{position:absolute;left:50%;top:70px;width:132px;height:132px;transform:translate(-50%,-50%);
+               border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff,#E2CBFF 32%,#8B3DF0 72%,#5B21B6);
+               animation:heartbeat 2.2s ease-in-out infinite}
+  .bomb-sphere::before{content:'';position:absolute;left:24%;top:14%;width:30px;height:18px;border-radius:50%;
+                       background:rgba(255,255,255,.85);transform:rotate(-24deg)}
+  .bomb-ring{position:absolute;left:50%;top:140px;transform:translateX(-50%);width:56px;height:16px;border-radius:8px;
+             background:linear-gradient(#D8C7F5,#9A85C4)}
+  .bomb-handle{position:absolute;left:50%;top:154px;transform:translateX(-50%);width:44px;height:104px;border-radius:14px 14px 20px 20px;
+               background:linear-gradient(180deg,#3B2364,#241242)}
+  .bomb-handle::after{content:'⑦';position:absolute;left:50%;top:38px;transform:translateX(-50%);color:var(--accent-soft);font-size:15px;opacity:.85}
+  @keyframes heartbeat{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.05)}}
+  #charge-dots{display:flex;gap:10px;justify-content:center;margin-top:8px}
+  #charge-dots i{width:10px;height:10px;border-radius:50%;background:rgba(196,181,253,.25);transition:background .2s,box-shadow .2s}
+  #charge-dots i.lit{background:var(--accent);box-shadow:0 0 10px rgba(168,85,247,.9)}
+
+  /* ============ ACT 2 — CAKE ============ */
+  #cake-wrap{position:relative;width:min(320px,82vw);height:330px;margin:34px auto 0;user-select:none}
+  .plate{position:absolute;bottom:-16px;left:-6%;right:-6%;height:34px;border-radius:50%;
+         background:radial-gradient(ellipse at 50% 40%,#4A3070,#2A1745 70%)}
+  .layer{position:absolute;border-radius:14px;box-shadow:inset 0 4px 6px rgba(255,255,255,.28),inset 0 -8px 12px rgba(76,29,149,.35)}
+  .layer.l3{bottom:0;left:0;right:0;height:70px;background:
+      linear-gradient(90deg,rgba(255,255,255,.22),transparent 18%,transparent 82%,rgba(255,255,255,.1)),
+      linear-gradient(180deg,#A78BFA,#7C3AED)}
+  .layer.l2{bottom:68px;left:8%;right:8%;height:62px;background:
+      linear-gradient(90deg,rgba(255,255,255,.24),transparent 18%,transparent 82%,rgba(255,255,255,.1)),
+      linear-gradient(180deg,#C084FC,#8B5CF6)}
+  .layer.l1{bottom:128px;left:16%;right:16%;height:58px;background:
+      linear-gradient(90deg,rgba(255,255,255,.26),transparent 18%,transparent 82%,rgba(255,255,255,.12)),
+      linear-gradient(180deg,#E3B8F9,#A855F7)}
+  #cake-wrap::after{content:'';position:absolute;bottom:-30px;left:6%;right:6%;height:20px;border-radius:50%;
+      background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.5),transparent 70%);z-index:-1}
+  .icing{position:absolute;top:-3px;left:0;right:0;height:20px;background:#E9D5FF;border-radius:12px 12px 0 0}
+  .icing::after{content:'';position:absolute;bottom:-10px;left:4px;right:4px;height:12px;
+                background:radial-gradient(circle at 11px 0,#E9D5FF 8px,transparent 9px);background-size:22px 12px;background-repeat:repeat-x}
+  .l2 .icing{background:#DDC5FA}.l2 .icing::after{background:radial-gradient(circle at 11px 0,#DDC5FA 8px,transparent 9px);background-size:22px 12px;background-repeat:repeat-x}
+  #candles{position:absolute;bottom:186px;left:7%;right:7%;display:flex;justify-content:space-between}
+  .candle{position:relative;width:28px;flex-shrink:0;height:96px;border:0;background:none;padding:0;cursor:pointer}
+  .stick{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:9px;height:46px;border-radius:3px;
+         background:repeating-linear-gradient(45deg,#fff 0 4px,#F0ABFC 4px 8px)}
+  .wick{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);width:2px;height:7px;background:#2A1745}
+  .flame{position:absolute;bottom:52px;left:50%;width:15px;height:22px;margin-left:-7.5px;
+         background:radial-gradient(50% 60% at 50% 35%,#FFF7CC 0%,#FFD34D 45%,#FF9A3D 75%,transparent 100%);
+         border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+         transform-origin:50% 100%;animation:flick .7s ease-in-out infinite alternate;transition:transform .18s ease,opacity .18s ease}
+  .flame::before{content:'';position:absolute;inset:-14px;border-radius:50%;
+         background:radial-gradient(circle,rgba(255,196,84,.35),transparent 70%)}
+  .candle:nth-child(2n) .flame{animation-delay:.22s}.candle:nth-child(3n) .flame{animation-delay:.4s}
+  @keyframes flick{from{transform:scaleY(.92) rotate(-2deg)}to{transform:scaleY(1.07) rotate(2deg)}}
+  .flame.out{transform:scale(0)!important;opacity:0;animation:none}
+  .smoke{position:absolute;bottom:56px;left:50%;width:12px;height:12px;margin-left:-6px;pointer-events:none;
+         background:radial-gradient(circle,rgba(205,200,215,.55),transparent 70%);border-radius:50%;
+         animation:rise 1.2s ease-out forwards}
+  @keyframes rise{to{transform:translate(var(--sx,6px),-52px) scale(2);opacity:0}}
+  #cake-wrap.done{animation:cakeJoy .6s ease}
+  @keyframes cakeJoy{30%{transform:translateY(-12px) scale(1.03)}60%{transform:translateY(0) scale(.99)}}
+  #wish-count{font-size:15px;color:var(--gold);font-weight:700;margin-top:26px;font-variant-numeric:tabular-nums}
+
+  /* ============ ACT 3 — BALLOONS ============ */
+  #sky{position:relative;width:min(420px,94vw);height:56vh;height:56svh;min-height:380px;margin-top:6px;user-select:none}
+  .balloon{position:absolute;border:0;background:none;padding:0;cursor:pointer;user-select:none;
+           animation:bob var(--bd,3.6s) ease-in-out var(--bdel,0s) infinite alternate}
+  @keyframes bob{from{transform:translateY(-8px) rotate(-2deg)}to{transform:translateY(9px) rotate(2.5deg)}}
+  .bl-body{position:relative;width:min(var(--bs,84px),24vw);height:calc(min(var(--bs,84px),24vw)*1.18);border-radius:48% 48% 46% 46%/56% 56% 44% 44%;
+           background:radial-gradient(120% 120% at 32% 24%,#F3E8FF 0%,var(--bc,#A855F7) 52%,#3B0764 100%);
+           box-shadow:inset -10px -14px 24px rgba(59,7,100,.5),inset 6px 8px 14px rgba(255,255,255,.16),0 18px 24px -12px rgba(0,0,0,.4)}
+  .bl-body::before{content:'';position:absolute;top:10%;left:18%;width:26%;height:38%;border-radius:50%;
+           transform:rotate(-24deg);background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,0))}
+  .bl-knot{width:0;height:0;margin:-3px auto 0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:10px solid var(--bc,#A855F7)}
+  .bl-str{width:2px;height:54px;margin:0 auto;background:rgba(196,181,253,.45);transform-origin:top;animation:sway 2.6s ease-in-out infinite alternate}
+  @keyframes sway{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+  .balloon.popped{visibility:hidden;pointer-events:none}
+  .shard{position:fixed;width:13px;height:9px;border-radius:40%;background:#A855F7;left:0;top:0;opacity:0;pointer-events:none;z-index:30}
+  #bl-msg{min-height:86px;width:min(400px,92vw);margin-top:6px;display:flex;align-items:center;justify-content:center}
+  #bl-card{position:relative;border-radius:18px;border:1px solid transparent;padding:14px 20px;
+           background:linear-gradient(rgba(255,255,255,.07),rgba(255,255,255,.03)) padding-box,
+                      linear-gradient(160deg,rgba(233,213,255,.5),rgba(168,85,247,.12) 40%,rgba(255,255,255,.04) 60%,rgba(168,85,247,.35)) border-box;
+           backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+           box-shadow:0 20px 40px -20px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);
+           font-size:16px;line-height:1.5;max-width:100%;opacity:0;transform:scale(.7)}
+  #bl-card.pop{animation:cardIn .4s cubic-bezier(.34,1.56,.64,1) forwards}
+  @keyframes cardIn{to{opacity:1;transform:scale(1)}}
+  #bl-count{font-size:14px;color:var(--gold);font-weight:700;margin-top:8px;font-variant-numeric:tabular-nums}
+
+  /* ============ ACT 4 — CERTIFICATE ============ */
+  #cert{width:min(430px,94vw);color:#2A1B3D;border-radius:4px;
+        padding:26px 22px 30px;margin-top:22px;position:relative;text-align:center;
+        border:9px solid transparent;
+        border-image:linear-gradient(135deg,#8C6A1D 0%,#E8C36A 18%,#FFF3C4 32%,#C89B3C 50%,#FFF3C4 68%,#E8C36A 82%,#8C6A1D 100%) 1;
+        background:
+          repeating-radial-gradient(circle at 30% 20%,rgba(120,80,40,.025) 0 1px,transparent 1px 3px),
+          linear-gradient(160deg,#FBF6EA 0%,#F5ECDA 55%,#EFE3C8 100%);
+        transform:scaleY(.05);transform-origin:top;
+        box-shadow:0 30px 60px -30px rgba(0,0,0,.7),inset 0 0 0 2px rgba(140,106,29,.5),inset 0 0 0 6px rgba(255,243,196,.45)}
+  #cert.unroll{transition:transform .55s cubic-bezier(.22,1,.36,1);transform:scaleY(1)}
+  #cert .c-eyebrow{font-size:10px;letter-spacing:.3em;color:#8C6A1D;font-weight:700;text-transform:uppercase}
+  #cert h3{font-family:var(--serif);font-size:22px;margin:8px 0 2px;letter-spacing:.1em;color:#7A5A16;
+           text-shadow:0 1px 0 rgba(255,255,255,.75),0 -1px 0 rgba(90,60,10,.3)}
+  #cert .c-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:#6D28D9;margin-bottom:12px}
+  #cert-name{font-family:var(--serif);font-style:italic;font-size:27px;color:#4C1D95;min-height:36px;display:block;margin:4px 0 12px}
+  #cert ul{list-style:none;padding:0;margin:0 0 14px;text-align:left}
+  #cert li{font-size:12.5px;line-height:1.55;padding:4px 0 4px 18px;position:relative}
+  #cert li::before{content:'💜';position:absolute;left:0;top:5px;font-size:9px}
+  #cert .c-issuer{font-family:var(--serif);font-style:italic;font-size:12px;color:#6D28D9;border-top:1px dashed #B794E6;
+                  padding-top:10px;padding-right:96px;min-height:88px;text-align:left}
+  #stamp{position:absolute;right:10px;bottom:8px;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;
+         border:3px solid #7E22CE;color:#7E22CE;mix-blend-mode:multiply;opacity:0;pointer-events:none}
+  #stamp em{font-style:normal;font-weight:800;font-size:10px;letter-spacing:.08em;line-height:1.5;text-align:center}
+  #stamp i{position:absolute;inset:7px;border:1.5px dashed #7E22CE;border-radius:50%}
+  #stamp.slam{animation:slam .35s ease-in forwards}
+  @keyframes slam{0%{transform:scale(2.4) rotate(-25deg);opacity:0}60%{transform:scale(.92) rotate(-10deg);opacity:1}100%{transform:scale(1) rotate(-12deg);opacity:1}}
+  #cert.shake{animation:cshake .16s linear}
+  @keyframes cshake{25%{transform:translate(3px,-1px) rotate(.4deg)}50%{transform:translate(-3px,1px) rotate(-.4deg)}75%{transform:translate(2px,1px)}}
+
+  /* ============ ACT 5 — TANVI TIMES ============ */
+  #tt-logo{font-family:var(--display);font-size:clamp(30px,9vw,52px);letter-spacing:.02em;line-height:1;
+           background:linear-gradient(90deg,#FFC94A,#F97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+  #tt-tag{font-size:11px;letter-spacing:.24em;color:var(--dim);text-transform:uppercase;margin:6px 0 22px}
+  #ticker-bar{align-self:stretch;margin:0 -22px;display:flex;align-items:stretch;background:#1B0E33;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+  #breaking{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:10px 14px;font-weight:800;font-size:13px;letter-spacing:.06em;
+            background:linear-gradient(135deg,#7E22CE,#C026D3);animation:brPulse 1.4s ease-in-out infinite}
+  @keyframes brPulse{50%{transform:scale(1.05)}}
+  #ticker-view{overflow:hidden;flex:1;display:flex;align-items:center}
+  #ticker-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:tick var(--td,60s) linear infinite}
+  #ticker-track span{font-size:14px;color:var(--text);padding:0 10px}
+  #ticker-track b{color:var(--gold);font-weight:400;padding:0 2px}
+  @keyframes tick{to{transform:translateX(-50%)}}
+  #awards{display:flex;flex-direction:column;gap:10px;margin-top:26px;width:min(430px,92vw)}
+  .award{display:flex;align-items:center;gap:12px;border:1px solid transparent;
+         background:linear-gradient(rgba(30,15,56,.78),rgba(22,11,40,.78)) padding-box,
+                    linear-gradient(160deg,rgba(233,213,255,.4),rgba(168,85,247,.1) 45%,rgba(168,85,247,.3)) border-box;
+         border-radius:16px;padding:12px 16px;text-align:left;font-size:14px;line-height:1.45;
+         box-shadow:0 14px 28px -18px rgba(0,0,0,.6)}
+  .award b{font-size:20px;flex:0 0 auto}
+  #awards-title{font-size:12px;letter-spacing:.26em;color:var(--accent-soft);text-transform:uppercase;font-weight:700;margin-top:30px}
+
+  /* ============ ACT 6 — LETTER ============ */
+  #act-letter{justify-content:flex-start}
+  #env-zone{position:relative;margin-top:30px;width:min(340px,88vw);user-select:none}
+  #envelope{position:relative;width:100%;height:190px;perspective:600px}
+  .env-body{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#2C1A47,#221338);border:1px solid rgba(196,181,253,.3)}
+  .env-flap{position:absolute;left:0;right:0;top:0;height:96px;background:linear-gradient(200deg,#3A2260,#2C1A47);
+            clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s cubic-bezier(.22,1,.36,1);z-index:3}
+  #envelope.open .env-flap{transform:rotateX(180deg);opacity:0;z-index:1;
+    transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .3s ease .35s}
+  #seal{position:absolute;left:50%;top:78px;transform:translate(-50%,-50%);z-index:4;width:56px;height:56px;border-radius:50%;
+        border:0;cursor:pointer;font-size:24px;display:grid;place-items:center;
+        background:radial-gradient(circle at 35% 30%,#C084FC,#7E22CE);box-shadow:0 4px 14px rgba(0,0,0,.45)}
+  #envelope.open #seal{opacity:0;pointer-events:none;transition:opacity .3s}
+  #letter{position:relative;z-index:2;margin:-70px auto 0;width:92%;border:1px solid transparent;
+          background:linear-gradient(rgba(44,26,71,.82),rgba(34,19,56,.86)) padding-box,
+                     linear-gradient(160deg,rgba(233,213,255,.45),rgba(168,85,247,.1) 45%,rgba(168,85,247,.3)) border-box;
+          backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+          box-shadow:0 24px 48px -24px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.07);
+          border-radius:14px;padding:22px 18px;text-align:left;transform:translateY(46px);opacity:0;
+          transition:transform .7s cubic-bezier(.22,1,.36,1) .25s,opacity .5s ease .25s}
+  #envelope.open + #letter, #letter.up{transform:translateY(0);opacity:1}
+  #letter-text{font-family:var(--serif);font-size:15.5px;line-height:1.75;white-space:pre-wrap;min-height:60px;color:var(--text)}
+  #letter-text::after{content:'▍';color:var(--accent);animation:blink 1s steps(2) infinite}
+  #letter-text.done-typing::after{content:''}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ============ ACT 7 — FINALE ============ */
+  #act-finale{justify-content:center;padding-bottom:140px}
+  #fin-title{display:flex;flex-wrap:wrap;gap:0 14px;justify-content:center;margin:8px 0 4px}
+  #fin-title span{font-family:var(--display);font-weight:900;letter-spacing:-.02em;font-size:clamp(34px,10.5vw,64px);line-height:1.1;opacity:0;transform:translateY(30px);
+     background:linear-gradient(110deg,#F5EAFE,#E9D5FF 30%,#C084FC 60%,#FDE68A);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  #fin-title span.noclip{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:initial;color:var(--accent-soft)}
+  #fin-title span.in{animation:wordIn .55s cubic-bezier(.34,1.56,.64,1) forwards}
+  @keyframes wordIn{to{opacity:1;transform:translateY(0)}}
+  .fin-line{font-size:16px;color:var(--text);max-width:36ch;margin:10px auto 0;line-height:1.6;opacity:0;transition:opacity .8s ease}
+  .fin-line.in{opacity:1}
+  .fin-line b{color:var(--gold);font-weight:700}
+  #borahae-note{font-size:12.5px;color:var(--dim);max-width:38ch;margin:22px auto 0;line-height:1.65;opacity:0;transition:opacity .8s ease}
+  #borahae-note.in{opacity:.9}
+  #ocean{position:absolute;bottom:0;left:0;right:0;height:74px;display:flex;justify-content:space-around;align-items:flex-end;
+         padding:0 8px;opacity:0;transition:opacity 1s ease;pointer-events:none}
+  #ocean.in{opacity:1}
+  #ocean i{width:10px;height:34px;border-radius:5px 5px 3px 3px;background:linear-gradient(180deg,#C084FC,#3B2364);position:relative;
+           transform-origin:bottom;animation:osway 2.4s ease-in-out infinite alternate}
+  #ocean i::before{content:'';position:absolute;top:-11px;left:-4px;width:18px;height:18px;border-radius:50%;
+                   background:radial-gradient(circle at 35% 30%,#fff,#C084FC 45%,#8B3DF0)}
+  @keyframes osway{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  #replay{margin-top:30px}
+  #made{font-size:11px;color:var(--dim);opacity:.7;margin-top:26px;letter-spacing:.06em}
+
+  /* ============ OVERLAYS ============ */
+  #wipe{position:fixed;left:0;top:0;width:200vmax;height:200vmax;margin:-100vmax 0 0 -100vmax;border-radius:50%;z-index:60;
+        background:radial-gradient(circle,#7E22CE 0%,#4C1D95 55%,#2E1065 100%);transform:scale(0);pointer-events:none;
+        display:grid;place-items:center;font-size:44px}
+  #confetti-cv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+  #heartrain{position:fixed;inset:0;pointer-events:none;z-index:45;display:none}
+  #heartrain.on{display:block}
+  .hr-fall{position:absolute;top:-8vh;animation:hrFall var(--dur,8s) linear var(--delay,0s) infinite}
+  .hr-fall span{display:inline-block;animation:hrSway var(--sway,2.8s) ease-in-out infinite alternate;opacity:var(--op,.8)}
+  @keyframes hrFall{to{transform:translateY(120vh)}}
+  @keyframes hrSway{from{transform:translateX(-12px)}to{transform:translateX(12px)}}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    #heartrain{display:none!important}
+  }
+</style>
+
+<div class="aurora" aria-hidden="true"></div>
+<canvas id="skyfx" aria-hidden="true"></canvas>
+<div class="beams" aria-hidden="true"></div>
+
+<header id="setlist" aria-label="Setlist progress">
+  <span data-i="0">🔦</span><span data-i="1">🎂</span><span data-i="2">🎈</span><span data-i="3">🏆</span>
+  <span data-i="4">📰</span><span data-i="5">💌</span><span data-i="6">🎉</span>
+</header>
+
+<!-- ================= ACT 1 : LIGHTS ================= -->
+<section class="act active" id="act-intro">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 1/7 · <b>ADMIT ONE · ARMY VIP</b></div>
+  <h1 class="rv" style="--rd:.15s">TANVI<br>DAY</h1>
+  <p class="sub rv" style="--rd:.28s">27 August · Sources confirm: aaj kaam optional hai, celebration compulsory</p>
+  <button id="bomb-zone" class="pressable rv" style="--rd:.42s" aria-label="ARMY Bomb lightstick, tap 3 times">
+    <div class="bomb-glow"></div>
+    <div class="bomb-sphere"></div>
+    <div class="bomb-ring"></div>
+    <div class="bomb-handle"></div>
+  </button>
+  <div id="charge-dots" class="rv" style="--rd:.55s" aria-hidden="true"><i></i><i></i><i></i></div>
+  <p class="hint rv" style="--rd:.65s">ARMY Bomb ko 3 baar tap karo.<br>Show shuru karte hain.</p>
+</section>
+
+<!-- ================= ACT 2 : WISHES ================= -->
+<section class="act" id="act-cake">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 2/7 · <b>WISH TIME</b></div>
+  <h2 class="rv" style="--rd:.15s">Pehle target,<br>phir party</h2>
+  <p class="sub rv" style="--rd:.25s">7 wishes ka target hai, appraisal isi pe depend karega. Candle tap karke phoonk maaro.</p>
+  <div id="cake-wrap" class="rv" style="--rd:.38s">
+    <div class="plate"></div>
+    <div class="layer l3"><div class="icing"></div></div>
+    <div class="layer l2"><div class="icing"></div></div>
+    <div class="layer l1"><div class="icing"></div></div>
+    <div id="candles"></div>
+  </div>
+  <div id="wish-count">7 wishes baaki 🕯️</div>
+  <button class="cta pressable" id="cta-cake">Ab balloons phodte hain 🎈</button>
+</section>
+
+<!-- ================= ACT 3 : BALLOONS ================= -->
+<section class="act" id="act-balloons">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 3/7 · <b>OFF THE RECORD</b></div>
+  <h2 class="rv" style="--rd:.15s">Confidential<br>files</h2>
+  <p class="sub rv" style="--rd:.25s">Har balloon mein ek off-the-record item hai. Phodo, padho, aage mat bhejo.</p>
+  <div id="sky" class="rv" style="--rd:.38s"></div>
+  <div id="bl-msg" class="rv" style="--rd:.48s"><div id="bl-card"></div></div>
+  <div id="bl-count" class="rv" style="--rd:.55s">0 / 7 files khuli 🎈</div>
+  <button class="cta pressable" id="cta-balloons">Award ceremony chalein 🏆</button>
+</section>
+
+<!-- ================= ACT 4 : AWARD ================= -->
+<section class="act" id="act-cert">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 4/7 · <b>AWARD CEREMONY</b></div>
+  <h2 class="rv" style="--rd:.15s">Aur award jaata hai...</h2>
+  <p class="sub rv" style="--rd:.25s">Jury mein ek hi member tha, aur voting pehle se fix thi.</p>
+  <div id="cert">
+    <div class="c-eyebrow">Praman Patra · Poori Sarkari Gambhirta Ke Saath</div>
+    <h3>GOSSIP PARTNER<br>OF THE YEAR</h3>
+    <div class="c-sub">yeh khitaab pradaan kiya jaata hai</div>
+    <span id="cert-name"></span>
+    <ul>
+      <li>Ek 'quick call' mein 3 ghante ka non-stop analysis fit karke naya keertimaan sthapit kiya hai.</li>
+      <li>'Ruko ruko, shuru se batao' waali demand ne anek adhoori khabron ko unka haq dilaya hai.</li>
+      <li>Meeting call ke beech mute dabake asli baat bolne ki durlabh kala ke liye vishesh saraahna.</li>
+      <li>Classified soochna ko hamesha 'tumhe kisi ko nahi batana' ki official mohar ke saath aage badhaya.</li>
+      <li>Woh wali aur you-know-who par gehri research, kisi PhD thesis se kam nahi.</li>
+    </ul>
+    <div class="c-issuer">Jaari karta: Best Friend Mantralaya, Chai Evam Chugli Vibhaag<br>Dinank: 27 August 2026 · Yeh award court mein maanya nahi hai, lekin har meeting call pe 100% valid hai.</div>
+    <div id="stamp" aria-hidden="true"><i></i><em>100%<br>OFFICIAL<br>·CANTEEN VALID·</em></div>
+  </div>
+  <button class="cta pressable" id="cta-cert">Breaking news dekho 📰</button>
+</section>
+
+<!-- ================= ACT 5 : TANVI TIMES ================= -->
+<section class="act" id="act-times">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 5/7 · <b>AAJ KI TAAZA KHABAR</b></div>
+  <div id="tt-logo" class="rv" style="--rd:.15s">TANVI TIMES</div>
+  <div id="tt-tag" class="rv" style="--rd:.25s">Office ki har khabar, sabse pehle</div>
+  <div id="ticker-bar" class="rv" style="--rd:.35s">
+    <div id="breaking">🔴 BREAKING</div>
+    <div id="ticker-view"><div id="ticker-track"></div></div>
+  </div>
+  <div id="awards-title" class="rv" style="--rd:.45s">Aaj ke Rashtriya Puraskar</div>
+  <div id="awards" class="rv" style="--rd:.55s">
+    <div class="award"><b>🏆</b>Rashtriya Chugli Ratna, 2026</div>
+    <div class="award"><b>💜</b>BTS ARMY ki Star Sipahi: Bias Defend Karne Mein Avval</div>
+    <div class="award"><b>📞</b>'Quick Sync' Ko Full Podcast Bana Dene Ki National Champion</div>
+    <div class="award"><b>🎓</b>PhD in 'Kuch Toh Chal Raha Hai' Studies</div>
+    <div class="award"><b>🎬</b>Best Actress: 'Main Busy Hoon' Category, Office Edition</div>
+  </div>
+  <button class="cta pressable show" id="cta-times">Ab kuch dil ki baat 💌</button>
+</section>
+
+<!-- ================= ACT 6 : DIL KI BAAT ================= -->
+<section class="act" id="act-letter">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 6/7 · <b>DIL KI BAAT</b></div>
+  <h2 class="rv" style="--rd:.15s">Ab thoda<br>serious</h2>
+  <p class="sub rv" style="--rd:.25s">Thoda hi. Seal pe tap karo, do minute ka kaam hai. 💜</p>
+  <div id="env-zone" class="rv" style="--rd:.38s">
+    <div id="envelope">
+      <div class="env-body"></div>
+      <div class="env-flap"></div>
+      <button id="seal" class="pressable" aria-label="Envelope kholo">💜</button>
+    </div>
+    <div id="letter"><div id="letter-text"></div></div>
+  </div>
+  <button class="cta pressable" id="cta-letter">Grand Finale 🎆</button>
+</section>
+
+<!-- ================= ACT 7 : ENCORE ================= -->
+<section class="act" id="act-finale">
+  <div class="eyebrow rv" style="--rd:.05s">ACT 7/7 · <b>ENCORE</b></div>
+  <div id="fin-title">
+    <span>HAPPY</span><span>BIRTHDAY</span><span>TANVI</span><span class="noclip">💜</span>
+  </div>
+  <p class="fin-line" id="fin1">Tumhare liye is naye saal ka theme song: <b>Yet to Come 💜</b></p>
+  <p class="fin-line" id="fin2"><b>Apobangpo.</b> ARMY forever, Bangtan forever. Aur haan, Tanvi forever bhi.</p>
+  <p id="borahae-note">Borahae ka matlab pata hai na? V ne 13 November 2016 ko kaha tha: purple rainbow ka aakhri color hai. Matlab aakhri tak trust, aakhri tak pyaar. Toh... Borahae, Tanvi. 💜</p>
+  <button class="cta pressable" id="replay">Ek baar aur? 🔁</button>
+  <div id="made">MADE WITH 💜 · SIRF TANVI KE LIYE · 27.08</div>
+  <div id="ocean" aria-hidden="true"></div>
+</section>
+
+<div id="wipe" aria-hidden="true">💜</div>
+<canvas id="confetti-cv" aria-hidden="true"></canvas>
+<div id="heartrain" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+(function(){
+  'use strict';
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var buzz = function(p){ try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  /* touch-fast pointerdown + keyboard/screen-reader click fallback, without double-firing */
+  var onPress = function(el, fn){
+    var t = 0;
+    el.addEventListener('pointerdown', function(e){ t = Date.now(); fn(e); });
+    el.addEventListener('click', function(e){ if(Date.now() - t > 500) fn(e); });
+  };
+
+  /* ---------- state ---------- */
+  var ACTS = ['act-intro','act-cake','act-balloons','act-cert','act-times','act-letter','act-finale'];
+  var current = 0;
+  var lastTap = { x: innerWidth/2, y: innerHeight/2 };
+  document.addEventListener('pointerdown', function(e){ lastTap.x = e.clientX; lastTap.y = e.clientY; }, {passive:true});
+
+  /* ---------- setlist ---------- */
+  function unlock(i){
+    var el = $('#setlist span[data-i="'+i+'"]');
+    if(el && !el.classList.contains('done')){ el.classList.add('done','pop'); }
+  }
+
+  /* ---------- scene wipe ---------- */
+  var wipe = $('#wipe');
+  function goTo(i, initFn){
+    unlock(current);
+    var swapped = false;
+    function swap(){
+      if(swapped) return; swapped = true;
+      $('#'+ACTS[current]).classList.remove('active');
+      current = i;
+      $('#'+ACTS[i]).classList.add('active');
+      scrollTo(0,0);
+      if(initFn) initFn();
+    }
+    if(RM || !wipe.animate){ swap(); return; }
+    var closed = false;
+    function closeWipe(){
+      if(closed) return; closed = true;
+      swap();
+      wipe.style.left = '50vw'; wipe.style.top = '50vh';
+      wipe.animate(
+        [{transform:'scale(1)'},{transform:'scale(0)'}],
+        {duration:420, easing:'cubic-bezier(0.4,0,0.2,1)', fill:'forwards', delay:160}
+      );
+      setTimeout(function(){ wipe.style.pointerEvents = 'none'; }, 640);
+    }
+    wipe.style.pointerEvents = 'auto'; /* swallow taps while the screen is covered */
+    wipe.style.left = lastTap.x + 'px';
+    wipe.style.top = lastTap.y + 'px';
+    var grow = wipe.animate(
+      [{transform:'scale(0)'},{transform:'scale(1)'}],
+      {duration:420, easing:'cubic-bezier(0.4,0,0.2,1)', fill:'forwards'}
+    );
+    grow.onfinish = closeWipe;
+    setTimeout(closeWipe, 700); /* fallback: never let the show stall */
+  }
+
+  /* ---------- confetti (pooled canvas) ---------- */
+  var cv = $('#confetti-cv'), ctx = cv.getContext('2d');
+  var DPR = Math.min(devicePixelRatio||1, 2);
+  function sizeCv(){ cv.width = innerWidth*DPR; cv.height = innerHeight*DPR; }
+  sizeCv(); addEventListener('resize', sizeCv);
+  var COLORS = ['#A855F7','#C4B5FD','#FACC15','#FFFFFF','#7E22CE'];
+  var pool = [], POOL_N = 150, running = false;
+  for(var p=0;p<POOL_N;p++) pool.push({alive:false,x:0,y:0,vx:0,vy:0,rot:0,vr:0,w:0,h:0,c:'',t:0});
+  function burst(x,y,n){
+    if(RM) return;
+    var armed = 0;
+    for(var i=0;i<pool.length && armed<n;i++){
+      var q = pool[i]; if(q.alive) continue;
+      var ang = Math.PI*(0.15 + 0.7*(armed/n)) + (armed%3)*0.09;
+      var sp = 4.5 + (armed%5)*1.15;
+      q.alive = true; q.x = x*DPR; q.y = y*DPR;
+      q.vx = Math.cos(ang)*sp*DPR*( (armed%2) ? 1 : -1 );
+      q.vy = -Math.sin(ang)*sp*DPR*1.35;
+      q.rot = armed*0.7; q.vr = 0.08 + (armed%4)*0.04;
+      q.w = (6+(armed%4)*2)*DPR; q.h = (4+(armed%3)*2)*DPR;
+      q.c = COLORS[armed%COLORS.length]; q.t = 0;
+      armed++;
+    }
+    if(!running){ running = true; requestAnimationFrame(tickCv); }
+  }
+  function tickCv(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    var alive = 0;
+    for(var i=0;i<pool.length;i++){
+      var q = pool[i]; if(!q.alive) continue;
+      q.t++; q.vy += 0.13*DPR;
+      q.x += q.vx + Math.sin(q.t*0.1)*0.5*DPR;
+      q.y += q.vy; q.rot += q.vr;
+      if(q.y > cv.height + 20){ q.alive = false; continue; }
+      alive++;
+      ctx.save(); ctx.translate(q.x,q.y); ctx.rotate(q.rot);
+      ctx.fillStyle = q.c; ctx.fillRect(-q.w/2,-q.h/2,q.w,q.h); ctx.restore();
+    }
+    if(alive>0){ requestAnimationFrame(tickCv); } else { running=false; ctx.clearRect(0,0,cv.width,cv.height); }
+  }
+
+  /* ---------- heart rain ---------- */
+  (function buildRain(){
+    var host = $('#heartrain');
+    for(var i=0;i<14;i++){
+      var d = document.createElement('div');
+      d.className = 'hr-fall';
+      d.style.cssText = 'left:'+(3+ (i*7.1)%94 )+'%;font-size:'+(14+(i%5)*4)+'px;'+
+        '--dur:'+(6+(i%6))+'s;--delay:'+((i*0.9)%5).toFixed(1)+'s;--sway:'+(2+(i%4)*0.5)+'s;--op:'+(0.5+(i%5)*0.1);
+      d.innerHTML = '<span>💜</span>';
+      host.appendChild(d);
+    }
+  })();
+
+  /* ---------- ambient starfield ---------- */
+  (function starfield(){
+    if(RM) return;
+    var cvs = document.getElementById('skyfx');
+    if(!cvs || !cvs.getContext) return;
+    var c2 = cvs.getContext('2d');
+    var W, H;
+    function size(){
+      var d = Math.min(devicePixelRatio||1, 2);
+      W = cvs.width = innerWidth*d; H = cvs.height = innerHeight*d;
+    }
+    size(); addEventListener('resize', size);
+    var stars = [], orbs = [], i;
+    for(i=0;i<70;i++) stars.push({x:Math.random(),y:Math.random(),r:.4+Math.random()*1.4,p:Math.random()*6.28,s:.5+Math.random()*1.5});
+    for(i=0;i<4;i++) orbs.push({x:Math.random(),y:Math.random(),r:80+Math.random()*110,p:Math.random()*6.28});
+    function draw(t){
+      t /= 1000;
+      c2.clearRect(0,0,W,H);
+      for(var j=0;j<orbs.length;j++){
+        var o = orbs[j];
+        var ox = o.x*W + Math.sin(t*.15+o.p)*30, oy = o.y*H + Math.cos(t*.12+o.p)*24;
+        var g = c2.createRadialGradient(ox,oy,0,ox,oy,o.r);
+        g.addColorStop(0,'rgba(168,85,247,.16)'); g.addColorStop(.5,'rgba(124,58,237,.07)'); g.addColorStop(1,'rgba(124,58,237,0)');
+        c2.fillStyle = g; c2.beginPath(); c2.arc(ox,oy,o.r,0,7); c2.fill();
+      }
+      for(var k=0;k<stars.length;k++){
+        var s = stars[k];
+        c2.globalAlpha = .25 + .75*Math.abs(Math.sin(t*s.s+s.p));
+        c2.fillStyle = '#E9D5FF'; c2.beginPath(); c2.arc(s.x*W,s.y*H,s.r,0,7); c2.fill();
+      }
+      c2.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+
+  /* ================= ACT 1 : BOMB ================= */
+  var charge = 0, bz = $('#bomb-zone'), dots = $$('#charge-dots i');
+  onPress(bz, function(){
+    if(charge>=3) return;
+    charge++;
+    bz.style.setProperty('--charge', charge);
+    dots[charge-1] && dots[charge-1].classList.add('lit');
+    buzz(30);
+    var s = bz.querySelector('.bomb-sphere');
+    if(s.animate) s.animate(
+      [{transform:'translate(-50%,-50%) scale(1)'},{transform:'translate(-50%,-50%) scale(1.1,0.92)'},{transform:'translate(-50%,-50%) scale(1)'}],
+      {duration:220, easing:'cubic-bezier(0.34,1.56,0.64,1)'}
+    );
+    if(charge>=3){
+      buzz([40,60,90]);
+      setTimeout(function(){ goTo(1, initCake); }, 420);
+    }
+  });
+
+  /* ================= ACT 2 : CAKE ================= */
+  var cakeInit = false, wishesLeft = 7;
+  function initCake(){
+    if(cakeInit) return; cakeInit = true;
+    var host = $('#candles');
+    for(var i=0;i<7;i++){
+      var b = document.createElement('button');
+      b.className = 'candle pressable';
+      b.setAttribute('aria-label','Candle '+(i+1));
+      b.innerHTML = '<div class="stick"></div><div class="wick"></div><div class="flame"></div>';
+      onPress(b, snuff);
+      host.appendChild(b);
+    }
+  }
+  function snuff(e){
+    var c = e.currentTarget;
+    var f = c.querySelector('.flame');
+    if(!f || f.classList.contains('out')) return;
+    f.classList.add('out');
+    buzz(20);
+    for(var i=0;i<3;i++){
+      var s = document.createElement('div');
+      s.className = 'smoke';
+      s.style.setProperty('--sx', ((i-1)*9)+'px');
+      s.style.animationDelay = (i*0.09)+'s';
+      s.addEventListener('animationend', function(){ this.remove(); });
+      c.appendChild(s);
+    }
+    wishesLeft--;
+    $('#wish-count').textContent = wishesLeft>0 ? (wishesLeft + ' wishes baaki 🕯️') : 'Saari wishes maang li! ✨';
+    if(wishesLeft===0){
+      var w = $('#cake-wrap'); w.classList.add('done');
+      setTimeout(function(){
+        var r = w.getBoundingClientRect();
+        burst(r.left+r.width/2, r.top+r.height/2, 40);
+        buzz([30,40,60]);
+        $('#cta-cake').classList.add('show');
+      }, 350);
+    }
+  }
+  $('#cta-cake').addEventListener('click', function(){ goTo(2, initBalloons); });
+
+  /* ================= ACT 3 : BALLOONS ================= */
+  var MSGS = [
+    'Jo cheezein hum dono jaante hain, HR ko kabhi pata nahi chalni chahiye.',
+    "Tumhara 'bas 2 minute, ek cheez batani hai' wala call kabhi 2 minute ka nahi hota.",
+    'Bias defend karte waqt tumhare paas lawyer se zyada points hote hain.',
+    "Tumhare 'main resign kar dungi' ke saal mein 47 episode aate hain.",
+    'Meeting mein sab serious, aur humari chat mein alag hi show chal raha hota hai.',
+    'Tumhare paas har bande ka nickname hai, aur sab ke sab accurate hain.',
+    'Din kaisa bhi ho, tumse baat karke lagta hai: chalega, ho jayega.'
+  ];
+  var BPOS = [[6,4],[40,0],[62,6],[10,38],[45,32],[64,46],[30,62]];
+  var blInit = false, popped = 0;
+  var shards = [];
+  (function makeShards(){
+    for(var i=0;i<5;i++){
+      var s = document.createElement('div'); s.className='shard';
+      document.body.appendChild(s); shards.push(s);
+    }
+  })();
+  function initBalloons(){
+    if(blInit) return; blInit = true;
+    var sky = $('#sky');
+    var tints = ['#A855F7','#C084FC','#8B5CF6','#D946EF','#A855F7','#7C3AED','#C084FC'];
+    for(var i=0;i<7;i++){
+      var b = document.createElement('button');
+      b.className = 'balloon';
+      b.setAttribute('aria-label','Balloon '+(i+1));
+      b.style.cssText = 'left:'+BPOS[i][0]+'%;top:'+BPOS[i][1]+'%;--bs:'+(64+(i%3)*10)+'px;--bc:'+tints[i]+
+                        ';--bd:'+(3+(i%4)*0.45)+'s;--bdel:'+(i*0.35)+'s';
+      b.innerHTML = '<div class="bl-body"></div><div class="bl-knot"></div><div class="bl-str"></div>';
+      b.dataset.msg = MSGS[i];
+      onPress(b, popBalloon);
+      sky.appendChild(b);
+    }
+  }
+  function popBalloon(e){
+    var b = e.currentTarget;
+    if(b.dataset.popping) return;
+    b.dataset.popping = '1';
+    var body = b.querySelector('.bl-body');
+    var r = body.getBoundingClientRect();
+    var cx = r.left + r.width/2, cy = r.top + r.height/2;
+    var doPop = function(){
+      b.classList.add('popped');
+      buzz(15);
+      if(!RM){
+        for(var i=0;i<5;i++){
+          var ang = (Math.PI*2/5)*i + 0.4;
+          var s = shards[i];
+          s.style.background = getComputedStyle(b).getPropertyValue('--bc') || '#A855F7';
+          if(s.animate) s.animate(
+            [{transform:'translate('+cx+'px,'+cy+'px) rotate(0) scale(1)', opacity:1},
+             {transform:'translate('+(cx+Math.cos(ang)*90)+'px,'+(cy+Math.sin(ang)*90)+'px) rotate('+(120+i*40)+'deg) scale(0.5)', opacity:0}],
+            {duration:350, easing:'ease-out'}
+          );
+        }
+      }
+      var card = $('#bl-card');
+      card.classList.remove('pop');
+      void card.offsetWidth;
+      card.textContent = b.dataset.msg;
+      card.classList.add('pop');
+      popped++;
+      $('#bl-count').textContent = popped + ' / 7 files khuli 🎈';
+      if(popped===7){
+        setTimeout(function(){
+          burst(innerWidth/2, innerHeight*0.35, 50);
+          $('#cta-balloons').classList.add('show');
+        }, 500);
+      }
+    };
+    var bb = b.querySelector('.bl-body');
+    if(!RM && bb.animate){
+      bb.animate([{transform:'scale(1)'},{transform:'scale(1.15)'}],{duration:60});
+      setTimeout(doPop, 70);
+    } else { doPop(); }
+  }
+  $('#cta-balloons').addEventListener('click', function(){ goTo(3, playCert); });
+
+  /* ================= ACT 4 : CERTIFICATE ================= */
+  var certPlayed = false;
+  function playCert(){
+    if(certPlayed) return; certPlayed = true;
+    var cert = $('#cert');
+    setTimeout(function(){ cert.classList.add('unroll'); }, 120);
+    setTimeout(function(){
+      typewrite($('#cert-name'), 'Ms. Tanvi Shah', 70, function(){
+        setTimeout(function(){
+          $('#stamp').classList.add('slam');
+          setTimeout(function(){
+            buzz(50);
+            cert.classList.add('shake');
+            setTimeout(function(){ $('#cta-cert').classList.add('show'); }, 500);
+          }, 210);
+        }, 400);
+      });
+    }, 800);
+  }
+  $('#cta-cert').addEventListener('click', function(){ goTo(4, initTicker); });
+
+  /* ================= ACT 5 : TICKER ================= */
+  var HEADLINES = [
+    'BREAKING: Woh wali ne aaj phir lunch mein sabki plate inspect ki, sources confirm',
+    'BADI KHABAR: You-know-who ka naya haircut, poore floor par emergency jaisa mahaul',
+    'EXCLUSIVE: Pantry ki chai aaj phir kadak nahi thi, janta mein bhaari rosh',
+    'ABHI ABHI: Woh dono aaj phir saath coffee peete dikhe, tasveerein jald hi',
+    'SANSANI: Monday ka quick sync 2 ghante chala, desh jaanna chahta hai kyun',
+    'MAHA EXCLUSIVE: Kisne kiska idea apne naam se pesh kiya? Investigation jaari',
+    'TAAZA KHABAR: Fridge mein rakha khana phir gayab, chor abhi bhi farar',
+    'ALERT: Boss aaj achhe mood mein, experts hairaan, wajah ki khoj jaari',
+    'DHAMAKA: Appraisal season shuru, poore office mein rahasyamai khamoshi',
+    'AAKHRI KHABAR: Tanvi ke bina chai break adhoora ghoshit, aadhikarik sootron ka daava',
+    'BREAKING: Chai break 5 minute se 55 minute kaise hua? Poora sach sirf TANVI TIMES pe',
+    'EXCLUSIVE: Pantry mein high-level baithak, agenda gupt, biscuit khatam',
+    'BADI KHABAR: Birthday girl ke paas har department ki inside news, HR aaj tak bekhabar'
+  ];
+  var tickInit = false;
+  function initTicker(){
+    if(tickInit) return; tickInit = true;
+    var track = $('#ticker-track');
+    var one = HEADLINES.map(function(h){ return '<span>'+h+'</span><b>💜</b>'; }).join('');
+    track.innerHTML = one + one;
+    requestAnimationFrame(function(){
+      var w = track.getBoundingClientRect().width/2;
+      track.style.setProperty('--td', Math.max(30, Math.round(w/60)) + 's');
+    });
+    var resumeTick = function(){ track.style.animationPlayState = 'running'; };
+    track.parentElement.addEventListener('pointerdown', function(){ track.style.animationPlayState = 'paused'; });
+    addEventListener('pointerup', resumeTick);
+    addEventListener('pointercancel', resumeTick);
+  }
+  $('#cta-times').addEventListener('click', function(){ goTo(5); });
+
+  /* ================= ACT 6 : LETTER ================= */
+  var LETTER =
+'Tanvi, happy birthday!\n\nEk minute ka silence un logon ke liye jinka post-mortem humne call pe kiya hai. Unhe kabhi pata nahi chalega, aur yahi is dosti ki neev hai.\n\nFunny baat yeh hai: hum asli mein bas 2-3 baar mile hain. Par office ka jitna andar ka haal mujhe pata hai, utna shayad HR ko bhi nahi pata. Iska poora credit tumhari ground reporting ko jaata hai. Tum field mein, main ghar se, aur system phir bhi world-class chalta hai.\n\nTumhari teen skills ka zikr zaroori hai. Ek: kisi ke seen karne ke time se uska poora mood decode kar leti ho. Do: "main bas keh rahi hoon" bol ke jo keh deti ho, woh kabhi "bas" nahi hota. Teen: concert tickets ke liye jo discipline hai, mutual fund waale dekh lein toh case study bana dein.\n\nAb seedhi baat. Milna kam hota hai, par baat roz hoti hai, aur farak kabhi laga nahi. Yeh Borahae type dosti hai, aakhri tak wale bharose wali. Bas, itna hi senti budget tha.\n\nWish ek hi hai: jitna dusron ka analysis karti ho, utna apna khayal bhi rakhna. Hasti raho, apni marzi se jiyo, aur cake ka sabse bada piece khud lena.\n\n- tumhara gossip partner 💜';
+  var typeJob = null;
+  function typewrite(el, text, speed, done){
+    if(RM){ el.textContent = text; el.classList.add('done-typing'); if(done) done(); return; }
+    var job = { cancelled: false };
+    typeJob = job;
+    var i = 0;
+    function step(){
+      if(job.cancelled) return;
+      if(i > text.length){ el.classList.add('done-typing'); typeJob = null; if(done) done(); return; }
+      el.textContent = text.slice(0, i);
+      var ch = text.charAt(i-1);
+      var delay = speed;
+      if(ch === ',') delay += 180;
+      if(ch === '.' || ch === '!' || ch === '?') delay += 320;
+      i++;
+      setTimeout(step, delay);
+    }
+    step();
+  }
+  var letterOpened = false, letterDone = false;
+  onPress($('#seal'), function(){
+    if(letterOpened) return; letterOpened = true;
+    buzz(25);
+    $('#envelope').classList.add('open');
+    $('#letter').classList.add('up');
+    setTimeout(function(){
+      if(letterDone) return; /* user already skipped during the open animation */
+      typewrite($('#letter-text'), LETTER, 26, function(){
+        letterDone = true;
+        $('#heartrain').classList.add('on');
+        $('#cta-letter').classList.add('show');
+      });
+    }, 750);
+  });
+  onPress($('#letter'), function(){
+    if(letterDone || !letterOpened) return;
+    if(typeJob){ typeJob.cancelled = true; typeJob = null; }
+    var el = $('#letter-text');
+    el.textContent = LETTER; el.classList.add('done-typing');
+    letterDone = true;
+    $('#heartrain').classList.add('on');
+    $('#cta-letter').classList.add('show');
+  });
+  $('#cta-letter').addEventListener('click', function(){
+    $('#heartrain').classList.remove('on');
+    goTo(6, playFinale);
+  });
+
+  /* ================= ACT 7 : FINALE ================= */
+  var finPlayed = false;
+  function playFinale(){
+    unlock(6);
+    if(finPlayed) return; finPlayed = true;
+    var words = $$('#fin-title span');
+    setTimeout(function(){ $('#ocean').classList.add('in'); }, 300);
+    words.forEach(function(w, i){
+      setTimeout(function(){ w.classList.add('in'); }, 900 + i*140);
+    });
+    setTimeout(function(){
+      burst(innerWidth*0.25, innerHeight*0.4, 60);
+      setTimeout(function(){ burst(innerWidth*0.5, innerHeight*0.3, 60); }, 250);
+      setTimeout(function(){ burst(innerWidth*0.75, innerHeight*0.4, 70); }, 500);
+      buzz([60,40,60,40,120]);
+    }, 1700);
+    setTimeout(function(){ $('#fin1').classList.add('in'); }, 2400);
+    setTimeout(function(){ $('#fin2').classList.add('in'); }, 3100);
+    setTimeout(function(){ $('#borahae-note').classList.add('in'); }, 3900);
+    setTimeout(function(){
+      $('#heartrain').classList.add('on');
+      $('#replay').classList.add('show');
+    }, 2800);
+  }
+  (function buildOcean(){
+    var o = $('#ocean');
+    for(var i=0;i<11;i++){
+      var s = document.createElement('i');
+      s.style.animationDelay = (i*0.21)+'s';
+      s.style.height = (26+(i%3)*8)+'px';
+      o.appendChild(s);
+    }
+  })();
+  $('#replay').addEventListener('click', function(){ location.reload(); });
+
+})();
+</script>
+
+</html>
