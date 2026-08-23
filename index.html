@@ -141,7 +141,7 @@
   #charge-dots i.lit{background:var(--accent);box-shadow:0 0 10px rgba(168,85,247,.9)}
 
   /* ============ ACT 2 — CAKE ============ */
-  #cake-wrap{position:relative;width:min(320px,82vw);height:330px;margin:34px auto 0;user-select:none}
+  #cake-wrap{position:relative;width:min(320px,82vw);height:330px;margin:34px auto 0;user-select:none;cursor:pointer}
   .plate{position:absolute;bottom:-16px;left:-6%;right:-6%;height:34px;border-radius:50%;
          background:radial-gradient(ellipse at 50% 40%,#4A3070,#2A1745 70%)}
   .layer{position:absolute;border-radius:14px;box-shadow:inset 0 4px 6px rgba(255,255,255,.28),inset 0 -8px 12px rgba(76,29,149,.35)}
@@ -383,7 +383,7 @@
 <section class="act" id="act-cake">
   <div class="eyebrow rv" style="--rd:.05s">ACT 2/7 · <b>WISH TIME</b></div>
   <h2 class="rv" style="--rd:.15s">Pehle target,<br>phir party</h2>
-  <p class="sub rv" style="--rd:.25s">7 wishes ka target hai, appraisal isi pe depend karega. Candle tap karke phoonk maaro.</p>
+  <p class="sub rv" style="--rd:.25s">7 candles, bas ek tap. Itna easy target toh appraisal mein bhi nahi milta.</p>
   <div id="cake-wrap" class="rv" style="--rd:.38s">
     <div class="plate"></div>
     <div class="layer l3"><div class="icing"></div></div>
@@ -409,22 +409,22 @@
 <!-- ================= ACT 4 : AWARD ================= -->
 <section class="act" id="act-cert">
   <div class="eyebrow rv" style="--rd:.05s">ACT 4/7 · <b>AWARD CEREMONY</b></div>
-  <h2 class="rv" style="--rd:.15s">Aur award jaata hai...</h2>
-  <p class="sub rv" style="--rd:.25s">Jury mein ek hi member tha, aur voting pehle se fix thi.</p>
+  <h2 class="rv" style="--rd:.15s">Ek promotion<br>due thi</h2>
+  <p class="sub rv" style="--rd:.25s">HR involved nahi tha. Seedha upar se appointment hua hai.</p>
   <div id="cert">
-    <div class="c-eyebrow">Praman Patra · Poori Sarkari Gambhirta Ke Saath</div>
-    <h3>GOSSIP PARTNER<br>OF THE YEAR</h3>
-    <div class="c-sub">yeh khitaab pradaan kiya jaata hai</div>
+    <div class="c-eyebrow">Official Appointment Letter · HR ko forward mat karna</div>
+    <h3>CHIEF GOSSIP OFFICER<br>(TEAM DIVISION)</h3>
+    <div class="c-sub">Yeh title, bina interview aur bina probation ke, officially diya jaata hai:</div>
     <span id="cert-name"></span>
     <ul>
-      <li>Ek 'quick call' mein ghante bhar ka non-stop analysis fit karke naya keertimaan sthapit kiya hai.</li>
-      <li>'Ruko ruko, shuru se batao' waali demand ne anek adhoori khabron ko unka haq dilaya hai.</li>
-      <li>Meeting call ke beech mute dabake asli baat bolne ki durlabh kala ke liye vishesh saraahna.</li>
-      <li>Classified soochna ko hamesha 'tumhe kisi ko nahi batana' ki official mohar ke saath aage badhaya.</li>
-      <li>Woh wali aur you-know-who par gehri research, kisi PhD thesis se kam nahi.</li>
+      <li>Team ki har chhoti badi update pe full grip. Source? Woh kabhi reveal nahi hota.</li>
+      <li>Code-names department mein 100% accuracy. Jo naam humne rakha, woh perfect baitha.</li>
+      <li>'Ruko, shuru se batao' bol ke story ka full recap lene mein certified expert.</li>
+      <li>Meeting calls pe mute button handling itni smooth ki iski training video banni chahiye.</li>
+      <li>'Doubt hai koi' bol ke ek ghante ka call chalane ka company record. Still unbroken.</li>
     </ul>
-    <div class="c-issuer">Jaari karta: Best Friend Mantralaya, Chai Evam Chugli Vibhaag<br>Dinank: 27 August 2026 · Yeh award court mein maanya nahi hai, lekin har meeting call pe 100% valid hai.</div>
-    <div id="stamp" aria-hidden="true"><i></i><em>100%<br>OFFICIAL<br>·CANTEEN VALID·</em></div>
+    <div class="c-issuer">Issued by: Department of Team Gossip &amp; Good Vibes<br>Date: 27 August 2026 · Validity: lifetime. Team calls pe 100% valid, mute on ho ya off.</div>
+    <div id="stamp" aria-hidden="true"><i></i><em>100%<br>OFFICIAL<br>NO TAKE-BACKS</em></div>
   </div>
   <button class="cta pressable" id="cta-cert">Breaking news dekho 📰</button>
 </section>
@@ -433,15 +433,15 @@
 <section class="act" id="act-times">
   <div class="eyebrow rv" style="--rd:.05s">ACT 5/7 · <b>AAJ KI TAAZA KHABAR</b></div>
   <div id="tt-logo" class="rv" style="--rd:.15s">TANVI TIMES</div>
-  <div id="tt-tag" class="rv" style="--rd:.25s">Office ki har khabar, sabse pehle</div>
+  <div id="tt-tag" class="rv" style="--rd:.25s">Team ki saari tea, garam garam, sabse pehle yahan</div>
   <div id="ticker-bar" class="rv" style="--rd:.35s">
     <div id="breaking">🔴 BREAKING</div>
     <div id="ticker-view"><div id="ticker-track"></div></div>
   </div>
-  <div id="awards-title" class="rv" style="--rd:.45s">Aaj ke Rashtriya Puraskar</div>
+  <div id="awards-title" class="rv" style="--rd:.45s">Aaj Ke Official Awards</div>
   <div id="awards" class="rv" style="--rd:.55s">
-    <div class="award"><b>🏆</b>Rashtriya Chugli Ratna, 2026</div>
-    <div class="award"><b>🎨</b>Diya Evam Umbrella Fine Arts: Rashtriya Gold Medalist</div>
+    <div class="award"><b>🏆</b>Team Gossip MVP, 2026</div>
+    <div class="award"><b>🎨</b>Diya &amp; Umbrella Art Department: Gold Medalist</div>
     <div class="award"><b>📞</b>'Quick Sync' Ko Full Podcast Bana Dene Ki National Champion</div>
     <div class="award"><b>🎓</b>PhD in 'Kuch Toh Chal Raha Hai' Studies</div>
     <div class="award"><b>🎬</b>Best Actress: 'Main Busy Hoon' Category, Office Edition</div>
@@ -741,13 +741,14 @@
       onPress(b, snuff);
       host.appendChild(b);
     }
+    onPress($('#cake-wrap'), snuff); /* poora cake tappable: ek phoonk sab bujha de */
   }
-  function snuff(e){
-    var c = e.currentTarget;
+  var blowing = false;
+  function snuffOne(c){
     var f = c.querySelector('.flame');
     if(!f || f.classList.contains('out')) return;
     f.classList.add('out');
-    buzz(20);
+    buzz(15);
     for(var i=0;i<3;i++){
       var s = document.createElement('div');
       s.className = 'smoke';
@@ -768,17 +769,29 @@
       }, 350);
     }
   }
+  /* one phoonk = all candles go out in a chain */
+  function snuff(){
+    if(blowing || wishesLeft===0) return;
+    blowing = true;
+    var candles = $$('#candles .candle').filter(function(c){
+      var f = c.querySelector('.flame');
+      return f && !f.classList.contains('out');
+    });
+    candles.forEach(function(c, i){
+      setTimeout(function(){ snuffOne(c); }, i * 140);
+    });
+  }
   $('#cta-cake').addEventListener('click', function(){ goTo(2, initBalloons); });
 
   /* ================= ACT 3 : BALLOONS ================= */
   var MSGS = [
-    'Jo cheezein hum dono jaante hain, HR ko kabhi pata nahi chalni chahiye.',
-    "'Doubt hai koi' se shuru hokar ghante bhar ki non-stop baatein. Best calls ever.",
-    'Diya ho ya umbrella, tumhare haath lagte hi art ban jata hai. 🎨',
-    'Office ki har khabar tumhare paas sabse pehle aati hai. News channels ko sharam aani chahiye.',
-    'Meeting mein sab serious, aur humari chat mein alag hi show chal raha hota hai.',
-    'Kuch logon ke jo code-names humne rakhe hain, sab ke sab 100% accurate hain. 🤫',
-    'Din kaisa bhi ho, tumse baat karke lagta hai: chalega, ho jayega.'
+    'Hum dono jo jaante hain na, woh HR tak kabhi nahi pahunchna chahiye. Kabhi bhi. 🤐',
+    "'Doubt hai koi' se start, aur phir ek ghanta non-stop baatein. Best calls ever.",
+    'Diya ho ya umbrella, tumhare haath lagte hi woh art ban jaata hai. 🎨',
+    'Team mein kuch bhi ho, khabar sabse pehle tumhare paas hoti hai. Respect.',
+    'Meeting mein sab serious, aur humari chat mein parallel show chal raha hota hai.',
+    'Jo code-names humne kuch logon ke rakhe hain, ek ek 100% accurate. No misses. 🤫',
+    'Din kitna bhi kharab ho, tumse baat karke lagta hai: chill, ho jayega.'
   ];
   var BPOS = [[6,4],[40,0],[62,6],[10,38],[45,32],[64,46],[30,62]];
   var blInit = false, popped = 0;
@@ -872,19 +885,16 @@
 
   /* ================= ACT 5 : TICKER ================= */
   var HEADLINES = [
-    'BREAKING: Woh wali ne aaj phir lunch mein sabki plate inspect ki, sources confirm',
-    'BADI KHABAR: You-know-who ka naya haircut, poore floor par emergency jaisa mahaul',
-    'EXCLUSIVE: Pantry ki chai aaj phir kadak nahi thi, janta mein bhaari rosh',
-    'ABHI ABHI: Woh dono aaj phir saath coffee peete dikhe, tasveerein jald hi',
-    'SANSANI: Monday ka quick sync 2 ghante chala, desh jaanna chahta hai kyun',
-    'MAHA EXCLUSIVE: Kisne kiska idea apne naam se pesh kiya? Investigation jaari',
-    'TAAZA KHABAR: Fridge mein rakha khana phir gayab, chor abhi bhi farar',
-    'ALERT: Boss aaj achhe mood mein, experts hairaan, wajah ki khoj jaari',
-    'DHAMAKA: Appraisal season shuru, poore office mein rahasyamai khamoshi',
-    'AAKHRI KHABAR: Tanvi ke bina chai break adhoora ghoshit, aadhikarik sootron ka daava',
-    'BREAKING: Chai break 5 minute se 55 minute kaise hua? Poora sach sirf TANVI TIMES pe',
-    'EXCLUSIVE: Pantry mein high-level baithak, agenda gupt, biscuit khatam',
-    'BADI KHABAR: Birthday girl ke paas har department ki inside news, HR aaj tak bekhabar'
+    "BREAKING: 'Quick sync' 5 minute ka bola tha, 50 minute chala. Kisi ko surprise nahi hua",
+    'Chai break pe hui discussion, official meeting se zyada kaam ki nikli',
+    'Deadline kal thi, deadline aaj hai, deadline ab ek lifestyle hai',
+    'Meeting ke asli minutes birthday girl ki chat mein milte hain. Source confirmed',
+    "Team member ne 'as per my last email' likh diya. Mahaul tense hai",
+    'Monday 9 baje meeting rakhi gayi. Team ka reply: seen',
+    "'Circle back karte hain' bola gaya tha. Circle aaj tak poora nahi hua",
+    'Ek aur meeting jo email ho sakti thi. Investigation jaari hai',
+    'Birthday girl ke paas team ki sab khabar hai, par source bataane se saaf mana',
+    'Chai pehle kaun banayega, is topic pe team mein high-level baatcheet chal rahi hai'
   ];
   var tickInit = false;
   function initTicker(){
@@ -905,7 +915,7 @@
 
   /* ================= ACT 6 : LETTER ================= */
   var LETTER =
-'Tanvi, happy birthday!\n\nEk minute ka silence un logon ke liye jinka post-mortem humne call pe kiya hai. Unhe kabhi pata nahi chalega, aur yahi is dosti ki neev hai.\n\nFunny baat yeh hai: hum asli mein bas 2-3 baar mile hain. Par office ka jitna andar ka haal mujhe pata hai, utna shayad HR ko bhi nahi pata. Iska poora credit tumhari ground reporting ko jaata hai. Tum field mein, main ghar se, aur system phir bhi world-class chalta hai.\n\nTumhari teen skills ka zikr zaroori hai. Ek: kisi ke seen karne ke time se uska poora mood decode kar leti ho. Do: "main bas keh rahi hoon" bol ke jo keh deti ho, woh kabhi "bas" nahi hota. Teen: haath mein brush aa jaye toh diya ho ya umbrella, tum usse masterpiece bana deti ho. Sach mein, kamaal ki artist ho.\n\nAb seedhi baat. Milna kam hota hai, par baat roz hoti hai, aur farak kabhi laga nahi. Yeh Borahae type dosti hai, aakhri tak wale bharose wali. Aur haan, ek baat: tumhare "doubt hai koi" wale calls mere din ka best part hote hain. Woh calls jinme time ka pata hi nahi chalta aur baatein khatam hi nahi hotin. Toh doubt chhota ho ya bada, kabhi bhi le aaya karo. Yeh line kabhi busy nahi hoti. Aur jo baat main tumse hamesha bolta hoon, aaj likh bhi raha hoon: doubt ho ya na ho, office rahe ya na rahe, bahar ki duniya mein bhi hum dost bane rahenge. Pakka. Bas, itna hi senti budget tha.\n\nWish ek hi hai: jitna dusron ka analysis karti ho, utna apna khayal bhi rakhna. Hasti raho, apni marzi se jiyo, aur cake ka sabse bada piece khud lena.\n\n- tumhara gossip partner 💜';
+'Happy birthday Tanvi!\n\nSabse pehle ek confession: team mein jo bhi hota hai, mujhe pata hai tumhe sab pata hota hai. Kisi ke message seen karne ke time se hi tum mood decode kar leti ho, yeh skill koi course nahi sikhata. Aur jo code-names humne logon ke rakhe hain, aaj tak ek bhi galat nahi nikla. No cap.\n\nWaise ek baat aur: jo ladki diya aur umbrella utha ke unhe art bana deti hai, usko sirf "talented" bolna kam hai. Tum genuinely great artist ho.\n\nAb asli baat. "Doubt hai koi" se shuru hone wali woh ek ghante ki calls mera din ka best part hoti hain. Pata hi nahi chalta time kahan gaya. Toh doubt chhota ho ya bada, yeh line kabhi busy nahi hoti. Aur promise wahi hai jo hamesha bolta hoon: office rahe ya na rahe, bahar ki duniya mein bhi hum dost bane rahenge.\n\nSorry, I know main kabhi kabhi irritate karta hoon. Aur thank you, har baar available rehne ke liye, aur irritate hoke bhi mujhe jhel lene ke liye. Yeh bhi ek skill hai.\n\nBas, khush raho aur life ko enjoy karo. Borahae 💜\n\n- tumhara personal doubt solver 💜';
   var typeJob = null;
   function typewrite(el, text, speed, done){
     if(RM){ el.textContent = text; el.classList.add('done-typing'); if(done) done(); return; }
