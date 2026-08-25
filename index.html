@@ -280,6 +280,16 @@
   #cert li::before{content:'💜';position:absolute;left:0;top:5px;font-size:9px}
   #cert .c-issuer{font-family:var(--serif);font-style:italic;font-size:12px;color:#6D28D9;border-top:1px dashed #B794E6;
                   padding-top:10px;padding-right:96px;min-height:88px;text-align:left}
+  #signblock{display:flex;justify-content:space-between;align-items:flex-end;margin:2px 0 12px;gap:10px}
+  #fakeqr{flex:0 0 auto;text-align:left}
+  #fakeqr svg{width:46px;height:46px;display:block}
+  #fakeqr small{display:block;font-size:8.5px;color:#6D28D9;font-style:italic;margin-top:3px;font-family:var(--serif)}
+  #sig{flex:0 0 auto;text-align:right}
+  #sig svg{width:138px;height:34px;display:block;margin-left:auto}
+  #sig path{stroke:#4C1D95;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340}
+  #cert.signed #sig path{animation:drawSig 1s ease forwards}
+  @keyframes drawSig{to{stroke-dashoffset:0}}
+  #sig small{display:block;font-size:9px;color:#6D28D9;font-family:var(--serif);font-style:italic;margin-top:2px}
   #stamp{position:absolute;right:10px;bottom:8px;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;
          border:3px solid #7E22CE;color:#7E22CE;mix-blend-mode:multiply;opacity:0;pointer-events:none}
   #stamp em{font-style:normal;font-weight:800;font-size:10px;letter-spacing:.08em;line-height:1.5;text-align:center}
@@ -488,11 +498,21 @@
     <ul>
       <li>Team ki har chhoti badi update pe full grip. Source? Woh kabhi reveal nahi hota.</li>
       <li>Code-names department mein 100% accuracy. Jo naam humne rakha, woh perfect baitha.</li>
-      <li>'Ruko, shuru se batao' bol ke story ka full recap lene mein certified expert.</li>
-      <li>Meeting calls pe mute button handling itni smooth ki iski training video banni chahiye.</li>
-      <li>'Doubt hai koi' bol ke ek ghante ka call chalane ka company record. Still unbroken.</li>
+      <li>Calls 5 minute ki bol ke shuru hoti hain, ghante bhar chalti hain. Time management: creative.</li>
+      <li>Top-secret information handling: flawless. Exception sirf ek allowed hai, aur woh main hoon.</li>
+      <li>Team ka din kaisa bhi ho, entertainment department kabhi band nahi hota.</li>
     </ul>
-    <div class="c-issuer">Issued by: Department of Team Gossip &amp; Good Vibes<br>Date: 27 August 2026 · Validity: lifetime. Team calls pe 100% valid, mute on ho ya off.</div>
+    <div id="signblock">
+      <div id="fakeqr" aria-hidden="true">
+        <svg viewBox="0 0 21 21"><rect x="0" y="0" width="21" height="21" fill="#F5ECDA"/><g fill="#2A1B3D"><rect x="0" y="0" width="5" height="5"/><rect x="16" y="0" width="5" height="5"/><rect x="0" y="16" width="5" height="5"/><rect x="1" y="1" width="3" height="3" fill="#F5ECDA"/><rect x="17" y="1" width="3" height="3" fill="#F5ECDA"/><rect x="1" y="17" width="3" height="3" fill="#F5ECDA"/><rect x="2" y="2" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="2" y="18" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="9" y="1" width="1" height="2"/><rect x="12" y="3" width="2" height="1"/><rect x="7" y="7" width="2" height="2"/><rect x="10" y="8" width="1" height="1"/><rect x="13" y="7" width="1" height="1"/><rect x="15" y="9" width="2" height="1"/><rect x="18" y="8" width="1" height="1"/><rect x="2" y="9" width="1" height="1"/><rect x="4" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="2"/><rect x="9" y="14" width="2" height="1"/><rect x="12" y="12" width="1" height="1"/><rect x="14" y="13" width="2" height="2"/><rect x="18" y="13" width="1" height="1"/><rect x="8" y="18" width="1" height="1"/><rect x="11" y="17" width="1" height="1"/><rect x="13" y="19" width="2" height="1"/><rect x="17" y="17" width="2" height="2"/></g></svg>
+        <small>Scan mat karna, decoration hai.</small>
+      </div>
+      <div id="sig">
+        <svg viewBox="0 0 140 34" aria-hidden="true"><path d="M4,26 C18,4 26,32 40,14 C50,2 56,28 70,16 C82,6 88,30 102,14 C112,4 118,26 136,10"/></svg>
+        <small>Digitally signed: Tumhara Doubt Solver</small>
+      </div>
+    </div>
+    <div class="c-issuer">Issued by: Department of Team Gossip &amp; Good Vibes<br>Date: 27 August 2026 · Validity: lifetime, har team call pe 100% valid.<br>Compensation: har call pe fresh gossip. Non-negotiable.</div>
     <div id="stamp" aria-hidden="true"><i></i><em>100%<br>OFFICIAL<br>NO TAKE-BACKS</em></div>
   </div>
   <button class="cta pressable" id="cta-cert">Breaking news dekho 📰</button>
@@ -1079,7 +1099,11 @@
           setTimeout(function(){
             buzz(50);
             cert.classList.add('shake');
-            setTimeout(function(){ $('#cta-cert').classList.add('show'); }, 500);
+            setTimeout(function(){
+              cert.classList.add('signed'); /* signature khud draw hoti hai */
+              buzz(15);
+              setTimeout(function(){ $('#cta-cert').classList.add('show'); }, 1100);
+            }, 450);
           }, 210);
         }, 400);
       });
