@@ -209,6 +209,16 @@
   #cake-wrap.done{animation:cakeJoy .6s ease}
   @keyframes cakeJoy{30%{transform:translateY(-12px) scale(1.03)}60%{transform:translateY(0) scale(.99)}}
   #wish-count{font-size:15px;color:var(--gold);font-weight:700;margin-top:26px;font-variant-numeric:tabular-nums}
+  #receipt{width:min(272px,76vw);margin:20px auto 0;background:#FBF8F1;color:#2A1B3D;position:relative;
+    font-family:'Courier New',Consolas,monospace;font-size:12.5px;line-height:1.75;text-align:center;
+    padding:14px 14px 18px;box-shadow:0 16px 34px -16px rgba(0,0,0,.6);
+    max-height:0;overflow:hidden;opacity:0;transition:max-height 1.5s ease-out,opacity .4s ease}
+  #receipt.print{max-height:360px;opacity:1}
+  #receipt .rc-h{letter-spacing:.08em;font-weight:700;margin:2px 0}
+  #receipt::after{content:'';position:absolute;left:0;right:0;bottom:0;height:7px;pointer-events:none;
+    background:
+      linear-gradient(45deg,#07030F 4px,transparent 0) 0 100%/9px 7px repeat-x,
+      linear-gradient(-45deg,#07030F 4px,transparent 0) 0 100%/9px 7px repeat-x}
 
   /* ============ ACT 3 — BALLOONS ============ */
   #sky{position:relative;width:min(420px,94vw);height:56vh;height:56svh;min-height:380px;margin-top:6px;user-select:none}
@@ -428,6 +438,16 @@
     <div id="candles"></div>
   </div>
   <div id="wish-count">7 wishes baaki 🕯️</div>
+  <div id="receipt" aria-hidden="true">
+    <div class="rc-h">━━━ WISH RECEIPT ━━━</div>
+    Date: 27 August<br>
+    Wishes received: 7/7 ✓<br>
+    Processing time: instant<br>
+    Status: SAB APPROVED<br>
+    Refund policy: nahi hai<br>
+    <div class="rc-h">━━━━━━━━━━━━━</div>
+    Thank you! Agle saal phir aana 💜
+  </div>
   <button class="cta pressable" id="cta-cake">Ab balloons phodte hain 🎈</button>
 </section>
 
@@ -903,8 +923,12 @@
         var r = w.getBoundingClientRect();
         burst(r.left+r.width/2, r.top+r.height/2, 40);
         buzz([30,40,60]);
-        $('#cta-cake').classList.add('show');
       }, 350);
+      setTimeout(function(){
+        var rc = $('#receipt');
+        if(rc){ rc.classList.add('print'); buzz([12,50,12,50,12,50,12]); } /* printer tick-tick feel */
+      }, 900);
+      setTimeout(function(){ $('#cta-cake').classList.add('show'); }, 2200);
     }
   }
   /* one phoonk = all candles go out in a chain */
