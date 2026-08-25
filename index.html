@@ -111,6 +111,19 @@
     color:var(--dim);padding:14px 28px;font-size:15px;font-weight:600;z-index:59;
     transform:scale(var(--ns,1));transition:transform .25s ease,top .25s ease,left .25s ease}
   body:not(.entered) #setlist{display:none}
+  #loader{position:fixed;inset:0;z-index:57;display:none;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:30px 26px;background:radial-gradient(120% 90% at 50% 0%,#160B28 0%,#07030F 62%);
+    transition:opacity .4s ease}
+  #loader.on{display:flex}
+  #loader.gone{opacity:0}
+  #loader .ld-heart{font-size:44px;animation:ldbeat 1s ease-in-out infinite;margin-bottom:22px}
+  @keyframes ldbeat{50%{transform:scale(1.18)}}
+  #ld-bar{width:min(320px,78vw);height:12px;border-radius:999px;background:rgba(196,181,253,.15);overflow:hidden;
+    border:1px solid rgba(196,181,253,.25)}
+  #ld-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#7C3AED,#A855F7,#FDE68A);
+    transition:width .5s ease}
+  #ld-pct{font-weight:800;font-size:15px;color:var(--gold);margin-top:12px;font-variant-numeric:tabular-nums}
+  #ld-status{color:var(--dim);font-size:14px;margin-top:6px;min-height:42px;max-width:30ch;line-height:1.5}
 
   /* ============ SETLIST BAR ============ */
   #setlist{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:40;display:flex;gap:2px;
@@ -357,6 +370,13 @@
     <button id="no-btn" aria-label="No (yeh button bhaagta hai)">Nahi</button>
   </div>
   <p id="ask-sass">Simple sawaal hai. Doosra option bas formality ke liye rakha hai.</p>
+</div>
+
+<div id="loader" aria-hidden="true">
+  <div class="ld-heart">💜</div>
+  <div id="ld-bar"><div id="ld-fill"></div></div>
+  <div id="ld-pct">0%</div>
+  <p id="ld-status">Birthday mode install ho raha hai...</p>
 </div>
 
 <header id="setlist" aria-label="Setlist progress">
@@ -696,16 +716,44 @@
     }
     no.addEventListener('pointerdown', dodge);
     no.addEventListener('click', function(e){ e.preventDefault(); dodge(e); });
-    yes.addEventListener('click', function(){
-      buzz([30, 40, 60]);
-      gate.classList.add('gone');
+    function enterShow(){
       document.body.classList.add('entered');
       var intro = $('#act-intro');
       intro.classList.remove('active');
       void intro.offsetWidth;
       intro.classList.add('active');
       setTimeout(function(){ burst(innerWidth / 2, innerHeight * 0.3, 35); }, 350);
-      setTimeout(function(){ gate.remove(); }, 650);
+    }
+    yes.addEventListener('click', function(){
+      buzz([30, 40, 60]);
+      gate.classList.add('gone');
+      setTimeout(function(){ gate.remove(); }, 550);
+      var loader = $('#loader');
+      if(RM || !loader){ enterShow(); return; }
+      var fill = $('#ld-fill'), pct = $('#ld-pct'), status = $('#ld-status');
+      loader.classList.add('on');
+      var STEPS = [
+        [0,    4,   'Birthday mode install ho raha hai...'],
+        [700,  26,  'Cake download ho raha hai...'],
+        [1400, 58,  'Balloons mein hawa bhari ja rahi hai...'],
+        [2100, 87,  'Candles ko convince kiya ja raha hai...'],
+        [2800, 87,  '87% pe atak gaya. Typical.'],
+        [3400, 99,  'BTS ko khabar bhej di gayi hai ✓'],
+        [3900, 100, 'Sab ready. Chalo!']
+      ];
+      STEPS.forEach(function(s){
+        setTimeout(function(){
+          fill.style.width = s[1] + '%';
+          pct.textContent = s[1] + '%';
+          status.textContent = s[2];
+          buzz(8);
+        }, s[0]);
+      });
+      setTimeout(function(){
+        loader.classList.add('gone');
+        setTimeout(function(){ loader.remove(); }, 420);
+        enterShow();
+      }, 4500);
     });
   })();
 
