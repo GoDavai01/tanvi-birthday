@@ -366,7 +366,7 @@
 
 <div id="askgate">
   <div id="ask-eyebrow">⚠ Zaroori Sawaal</div>
-  <h2 id="ask-q">Tumhare liye kuch banaya hai. Dekho na?</h2>
+  <h2 id="ask-q">Tumhare liye kuch banaya hai bhai. Dekho na?</h2>
   <div id="ask-btns">
     <button id="yes-btn" class="pressable">Haan, dikhao</button>
     <button id="no-btn" aria-label="No (yeh button bhaagta hai)">Nahi</button>
@@ -698,6 +698,10 @@
       if(home) return;
       var r = no.getBoundingClientRect();
       home = { x: r.left, y: r.top, w: r.width, h: r.height };
+      /* invisible placeholder: Yes button apni jagah pe hi rahe, No ke purane spot pe na khiske */
+      var ph = document.createElement('span');
+      ph.style.cssText = 'display:inline-block;width:' + Math.round(home.w) + 'px;height:' + Math.round(home.h) + 'px;visibility:hidden;pointer-events:none';
+      no.parentNode.insertBefore(ph, no);
       no.style.position = 'fixed';
       no.style.left = home.x + 'px';
       no.style.top = home.y + 'px';
@@ -752,7 +756,15 @@
       jump(Math.max(.45, 1 - dodges * .13).toFixed(2));
     }
     no.addEventListener('pointerdown', dodge);
-    no.addEventListener('click', function(e){ e.preventDefault(); dodge(e); });
+    no.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); dodge(e); });
+    /* ghost-click killer: No ke bhaagne ke turant baad aane wala phantom click
+       (jo ab Yes ya kisi aur cheez pe land ho sakta hai) capture phase mein hi maar do */
+    document.addEventListener('click', function(e){
+      if(lastDodge && Date.now() - lastDodge < 700 && document.body.contains(gate)){
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
     function enterShow(){
       document.body.classList.add('entered');
       var intro = $('#act-intro');
