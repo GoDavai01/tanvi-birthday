@@ -270,26 +270,32 @@
         transform:scaleY(.05);transform-origin:top;
         box-shadow:0 30px 60px -30px rgba(0,0,0,.7),inset 0 0 0 2px rgba(140,106,29,.5),inset 0 0 0 6px rgba(255,243,196,.45)}
   #cert.unroll{transition:transform .55s cubic-bezier(.22,1,.36,1);transform:scaleY(1)}
-  #cert .c-eyebrow{font-size:10px;letter-spacing:.3em;color:#8C6A1D;font-weight:700;text-transform:uppercase}
-  #cert h3{font-family:var(--serif);font-size:22px;margin:8px 0 2px;letter-spacing:.1em;color:#7A5A16;
-           text-shadow:0 1px 0 rgba(255,255,255,.75),0 -1px 0 rgba(90,60,10,.3)}
-  #cert .c-sub{font-family:var(--serif);font-style:italic;font-size:13px;color:#6D28D9;margin-bottom:12px}
-  #cert-name{font-family:var(--serif);font-style:italic;font-size:27px;color:#4C1D95;min-height:36px;display:block;margin:4px 0 12px}
-  #cert ul{list-style:none;padding:0;margin:0 0 14px;text-align:left}
-  #cert li{font-size:12.5px;line-height:1.55;padding:4px 0 4px 18px;position:relative}
-  #cert li::before{content:'💜';position:absolute;left:0;top:5px;font-size:9px}
-  #cert .c-issuer{font-family:var(--serif);font-style:italic;font-size:12px;color:#6D28D9;border-top:1px dashed #B794E6;
-                  padding-top:10px;padding-right:96px;min-height:88px;text-align:left}
-  #signblock{display:flex;justify-content:space-between;align-items:flex-end;margin:2px 0 12px;gap:10px}
+  #cert{font-family:'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif}
+  #cert .c-eyebrow{font-family:var(--body);font-size:10px;letter-spacing:.28em;color:#8C6A1D;font-weight:700;text-transform:uppercase}
+  #cert h3{font-size:25px;margin:10px 0 4px;letter-spacing:.12em;color:#6F4E0E;line-height:1.25;
+           text-shadow:0 1px 0 rgba(255,255,255,.85),0 -1px 0 rgba(90,60,10,.35)}
+  .c-orn{display:flex;align-items:center;gap:10px;color:#B8860B;font-size:12px;margin:8px 4px 12px}
+  .c-orn::before,.c-orn::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,#C89B3C)}
+  .c-orn::after{background:linear-gradient(90deg,#C89B3C,transparent)}
+  #cert .c-sub{font-style:italic;font-size:14px;color:#432371;margin-bottom:12px;line-height:1.5}
+  #cert-name{font-style:italic;font-size:32px;color:#35186B;min-height:42px;display:block;margin:4px 0 14px;
+             text-shadow:0 1px 0 rgba(255,255,255,.6)}
+  #cert ul{list-style:none;padding:0;margin:0 0 16px;text-align:left}
+  #cert li{font-size:13.5px;line-height:1.6;padding:5px 0 5px 20px;position:relative;color:#241536}
+  #cert li::before{content:'💜';position:absolute;left:0;top:7px;font-size:10px}
+  #cert .c-issuer{font-style:italic;font-size:13px;color:#432371;border-top:1px dashed #B794E6;
+                  padding-top:12px;padding-right:96px;min-height:88px;text-align:left;line-height:1.7}
+  #signblock{display:flex;justify-content:space-between;align-items:flex-end;margin:2px 0 14px;gap:10px}
   #fakeqr{flex:0 0 auto;text-align:left}
-  #fakeqr svg{width:46px;height:46px;display:block}
-  #fakeqr small{display:block;font-size:8.5px;color:#6D28D9;font-style:italic;margin-top:3px;font-family:var(--serif)}
+  #fakeqr svg{width:54px;height:54px;display:block;image-rendering:pixelated}
+  #fakeqr small{display:block;font-size:10px;color:#432371;font-style:italic;margin-top:4px;max-width:110px;line-height:1.35}
   #sig{flex:0 0 auto;text-align:right}
-  #sig svg{width:138px;height:34px;display:block;margin-left:auto}
-  #sig path{stroke:#4C1D95;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340}
-  #cert.signed #sig path{animation:drawSig 1s ease forwards}
+  #sig svg{width:172px;height:46px;display:block;margin-left:auto}
+  #sig path{stroke:#35186B;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+  #cert.signed #sig path{animation:drawSig .9s ease forwards}
+  #cert.signed #sig path.p2{animation-duration:.5s;animation-delay:.6s}
   @keyframes drawSig{to{stroke-dashoffset:0}}
-  #sig small{display:block;font-size:9px;color:#6D28D9;font-family:var(--serif);font-style:italic;margin-top:2px}
+  #sig small{display:block;font-size:10px;color:#432371;font-style:italic;margin-top:3px}
   #stamp{position:absolute;right:10px;bottom:8px;width:92px;height:92px;border-radius:50%;display:grid;place-items:center;
          border:3px solid #7E22CE;color:#7E22CE;mix-blend-mode:multiply;opacity:0;pointer-events:none}
   #stamp em{font-style:normal;font-weight:800;font-size:10px;letter-spacing:.08em;line-height:1.5;text-align:center}
@@ -493,6 +499,7 @@
   <div id="cert">
     <div class="c-eyebrow">Official Appointment Letter · HR ko forward mat karna</div>
     <h3>CHIEF GOSSIP OFFICER<br>(TEAM DIVISION)</h3>
+    <div class="c-orn">✦</div>
     <div class="c-sub">Yeh title, bina interview aur bina probation ke, officially diya jaata hai:</div>
     <span id="cert-name"></span>
     <ul>
@@ -504,11 +511,14 @@
     </ul>
     <div id="signblock">
       <div id="fakeqr" aria-hidden="true">
-        <svg viewBox="0 0 21 21"><rect x="0" y="0" width="21" height="21" fill="#F5ECDA"/><g fill="#2A1B3D"><rect x="0" y="0" width="5" height="5"/><rect x="16" y="0" width="5" height="5"/><rect x="0" y="16" width="5" height="5"/><rect x="1" y="1" width="3" height="3" fill="#F5ECDA"/><rect x="17" y="1" width="3" height="3" fill="#F5ECDA"/><rect x="1" y="17" width="3" height="3" fill="#F5ECDA"/><rect x="2" y="2" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="2" y="18" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="9" y="1" width="1" height="2"/><rect x="12" y="3" width="2" height="1"/><rect x="7" y="7" width="2" height="2"/><rect x="10" y="8" width="1" height="1"/><rect x="13" y="7" width="1" height="1"/><rect x="15" y="9" width="2" height="1"/><rect x="18" y="8" width="1" height="1"/><rect x="2" y="9" width="1" height="1"/><rect x="4" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="2"/><rect x="9" y="14" width="2" height="1"/><rect x="12" y="12" width="1" height="1"/><rect x="14" y="13" width="2" height="2"/><rect x="18" y="13" width="1" height="1"/><rect x="8" y="18" width="1" height="1"/><rect x="11" y="17" width="1" height="1"/><rect x="13" y="19" width="2" height="1"/><rect x="17" y="17" width="2" height="2"/></g></svg>
+        <svg viewBox="0 0 25 25" shape-rendering="crispEdges"><rect width="25" height="25" fill="#F5ECDA"/><g fill="#241536"><rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="#F5ECDA"/><rect x="2" y="2" width="3" height="3"/><rect x="18" y="0" width="7" height="7"/><rect x="19" y="1" width="5" height="5" fill="#F5ECDA"/><rect x="20" y="2" width="3" height="3"/><rect x="0" y="18" width="7" height="7"/><rect x="1" y="19" width="5" height="5" fill="#F5ECDA"/><rect x="2" y="20" width="3" height="3"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="11" y="1" width="1" height="1"/><rect x="13" y="0" width="1" height="1"/><rect x="15" y="2" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="13" y="4" width="1" height="1"/><rect x="15" y="4" width="1" height="1"/><rect x="8" y="8" width="2" height="1"/><rect x="11" y="9" width="1" height="1"/><rect x="13" y="8" width="1" height="1"/><rect x="15" y="9" width="1" height="1"/><rect x="17" y="8" width="1" height="1"/><rect x="19" y="9" width="1" height="1"/><rect x="21" y="8" width="1" height="1"/><rect x="23" y="9" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="11" y="12" width="1" height="1"/><rect x="13" y="11" width="2" height="1"/><rect x="16" y="12" width="1" height="1"/><rect x="18" y="11" width="1" height="1"/><rect x="20" y="13" width="1" height="1"/><rect x="22" y="12" width="1" height="1"/><rect x="8" y="14" width="1" height="1"/><rect x="10" y="15" width="1" height="1"/><rect x="12" y="14" width="1" height="1"/><rect x="14" y="15" width="1" height="1"/><rect x="16" y="14" width="2" height="1"/><rect x="19" y="15" width="1" height="1"/><rect x="21" y="14" width="1" height="1"/><rect x="23" y="15" width="1" height="1"/><rect x="9" y="17" width="1" height="1"/><rect x="11" y="18" width="1" height="1"/><rect x="13" y="17" width="1" height="1"/><rect x="15" y="18" width="1" height="1"/><rect x="17" y="17" width="1" height="1"/><rect x="19" y="18" width="2" height="1"/><rect x="22" y="17" width="1" height="1"/><rect x="9" y="20" width="1" height="1"/><rect x="11" y="21" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="15" y="21" width="1" height="1"/><rect x="17" y="20" width="1" height="1"/><rect x="19" y="21" width="1" height="1"/><rect x="21" y="20" width="1" height="1"/><rect x="23" y="21" width="1" height="1"/><rect x="10" y="23" width="1" height="1"/><rect x="12" y="22" width="1" height="1"/><rect x="14" y="23" width="1" height="1"/><rect x="16" y="22" width="1" height="1"/><rect x="18" y="23" width="1" height="1"/><rect x="20" y="23" width="1" height="1"/><rect x="22" y="23" width="1" height="1"/></g></svg>
         <small>Scan mat karna, decoration hai.</small>
       </div>
       <div id="sig">
-        <svg viewBox="0 0 140 34" aria-hidden="true"><path d="M4,26 C18,4 26,32 40,14 C50,2 56,28 70,16 C82,6 88,30 102,14 C112,4 118,26 136,10"/></svg>
+        <svg viewBox="0 0 170 46" aria-hidden="true">
+          <path pathLength="1" d="M6,30 C10,8 18,6 22,20 C25,30 30,32 34,20 C38,8 44,6 48,18 C51,28 56,30 60,20 C64,10 68,10 72,20 C75,28 80,28 86,18 C92,8 98,10 102,20 C106,28 112,26 118,18 C124,10 130,12 136,20 C140,26 148,24 158,15"/>
+          <path pathLength="1" class="p2" d="M28,38 C60,44 120,42 152,32"/>
+        </svg>
         <small>Digitally signed: Tumhara Doubt Solver</small>
       </div>
     </div>
