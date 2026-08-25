@@ -234,6 +234,19 @@
   .bl-str{width:2px;height:54px;margin:0 auto;background:rgba(196,181,253,.45);transform-origin:top;animation:sway 2.6s ease-in-out infinite alternate}
   @keyframes sway{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
   .balloon.popped{visibility:hidden;pointer-events:none}
+  .balloon{transition:left .35s ease,top .35s ease}
+  .balloon.gold .bl-body{background:radial-gradient(120% 120% at 32% 24%,#FFF7DC 0%,#FFC94A 52%,#8A5A08 100%);
+    box-shadow:inset -10px -14px 24px rgba(120,70,10,.45),inset 6px 8px 14px rgba(255,255,255,.3),0 18px 30px -10px rgba(255,201,74,.4)}
+  .balloon.gold .bl-knot{border-bottom-color:#D99A06}
+  .balloon.wiggle{animation:blWiggle .4s ease}
+  @keyframes blWiggle{25%{transform:translateX(-8px) rotate(-5deg)}50%{transform:translateX(7px) rotate(4deg)}75%{transform:translateX(-4px) rotate(-2deg)}}
+  #leakstamp{position:fixed;left:50%;top:38%;transform:translate(-50%,-50%) rotate(-14deg) scale(0);z-index:46;
+    border:4px solid #FF5A8A;color:#FF5A8A;border-radius:10px;padding:10px 24px;font-weight:900;
+    font-size:clamp(22px,7vw,34px);letter-spacing:.06em;background:rgba(7,3,15,.6);pointer-events:none;opacity:0;white-space:nowrap}
+  #leakstamp.slam2{animation:slam2 .5s cubic-bezier(.2,1.4,.4,1) forwards}
+  @keyframes slam2{0%{opacity:0;transform:translate(-50%,-50%) rotate(-26deg) scale(2.2)}
+    60%{opacity:1;transform:translate(-50%,-50%) rotate(-12deg) scale(.94)}
+    100%{opacity:1;transform:translate(-50%,-50%) rotate(-14deg) scale(1)}}
   .shard{position:fixed;width:13px;height:9px;border-radius:40%;background:#A855F7;left:0;top:0;opacity:0;pointer-events:none;z-index:30}
   #bl-msg{min-height:86px;width:min(400px,92vw);margin-top:6px;display:flex;align-items:center;justify-content:center}
   #bl-card{position:relative;border-radius:18px;border:1px solid transparent;padding:14px 20px;
@@ -554,6 +567,7 @@
   <div id="ocean" aria-hidden="true"></div>
 </section>
 
+<div id="leakstamp" aria-hidden="true">ALL FILES LEAKED ✓</div>
 <div id="lightbox" aria-hidden="true"><img alt=""><div id="lb-cap"></div></div>
 <div id="wipe" aria-hidden="true">💜</div>
 <canvas id="confetti-cv" aria-hidden="true"></canvas>
@@ -946,14 +960,14 @@
   $('#cta-cake').addEventListener('click', function(){ goTo(2, initBalloons); });
 
   /* ================= ACT 3 : BALLOONS ================= */
-  var MSGS = [
-    'Hum dono jo jaante hain na, woh HR tak kabhi nahi pahunchna chahiye. Kabhi bhi. 🤐',
-    "'Doubt hai koi' se start, aur phir ek ghanta non-stop baatein. Best calls ever.",
-    'Diya ho ya umbrella, tumhare haath lagte hi woh art ban jaata hai. 🎨',
-    'Team mein kuch bhi ho, khabar sabse pehle tumhare paas hoti hai. Respect.',
-    'Meeting mein sab serious, aur humari chat mein parallel show chal raha hota hai.',
-    'Jo code-names humne kuch logon ke rakhe hain, ek ek 100% accurate. No misses. 🤫',
-    'Din kitna bhi kharab ho, tumse baat karke lagta hai: chill, ho jayega.'
+  var FILES = [
+    { t: 'normal', m: 'Humari chat history HR tak pahunchi toh dono ka farewell mail same din jayega.' },
+    { t: 'normal', m: 'Doubt se shuru hoti hai, duniya ke har topic pe khatam. Yeh calls >>> Friday evening.' },
+    { t: 'decoy',  m: 'Is balloon mein kuch nahi tha. Recession hai, tum samajh sakti ho.' },
+    { t: 'normal', m: 'Meeting mein sab serious, humari chat mein live commentary. Do shows, ek ticket.' },
+    { t: 'normal', m: 'Diya-umbrella painting ke baad sab samajh gaye: tumse compete nahi karna, seekhna hai.' },
+    { t: 'runner', m: "Yeh balloon 'No' button ka student tha. Waise, humare rakhe code-names? Aaj tak 100% accurate. 🤫" },
+    { t: 'gold',   m: 'Honest review: din kaisa bhi ho, tumse baat ke baad 10/10, no notes 💜' }
   ];
   var BPOS = [[6,4],[40,0],[62,6],[10,38],[45,32],[64,46],[30,62]];
   var blInit = false, popped = 0;
@@ -967,22 +981,47 @@
   function initBalloons(){
     if(blInit) return; blInit = true;
     var sky = $('#sky');
-    var tints = ['#A855F7','#C084FC','#8B5CF6','#D946EF','#A855F7','#7C3AED','#C084FC'];
+    var tints = ['#A855F7','#C084FC','#8B5CF6','#D946EF','#A855F7','#7C3AED','#FFC94A'];
     for(var i=0;i<7;i++){
       var b = document.createElement('button');
-      b.className = 'balloon';
+      b.className = 'balloon' + (FILES[i].t === 'gold' ? ' gold' : '');
       b.setAttribute('aria-label','Balloon '+(i+1));
-      b.style.cssText = 'left:'+BPOS[i][0]+'%;top:'+BPOS[i][1]+'%;--bs:'+(64+(i%3)*10)+'px;--bc:'+tints[i]+
+      b.style.cssText = 'left:'+BPOS[i][0]+'%;top:'+BPOS[i][1]+'%;--bs:'+(FILES[i].t === 'gold' ? 96 : 64+(i%3)*10)+'px;--bc:'+tints[i]+
                         ';--bd:'+(3+(i%4)*0.45)+'s;--bdel:'+(i*0.35)+'s';
       b.innerHTML = '<div class="bl-body"></div><div class="bl-knot"></div><div class="bl-str"></div>';
-      b.dataset.msg = MSGS[i];
+      b.dataset.msg = FILES[i].m;
+      b.dataset.type = FILES[i].t;
       onPress(b, popBalloon);
       sky.appendChild(b);
     }
   }
+  function showCard(msg){
+    var card = $('#bl-card');
+    card.classList.remove('pop');
+    void card.offsetWidth;
+    card.textContent = msg;
+    card.classList.add('pop');
+  }
   function popBalloon(e){
     var b = e.currentTarget;
     if(b.dataset.popping) return;
+    /* golden file: locked jab tak baaki saari files clear na hon */
+    if(b.dataset.type === 'gold' && popped < 6){
+      showCard('Pehle baaki files clear karo 😌');
+      b.classList.remove('wiggle'); void b.offsetWidth; b.classList.add('wiggle');
+      setTimeout(function(){ b.classList.remove('wiggle'); }, 450);
+      buzz(20);
+      return;
+    }
+    /* bhagoda file: pehli baar tap pe bhaag jata hai */
+    if(b.dataset.type === 'runner' && !b.dataset.fled){
+      b.dataset.fled = '1';
+      showCard('🏃 Arre! File bhaag gayi. Pakdo!');
+      b.style.left = '4%';
+      b.style.top = '2%';
+      buzz(15);
+      return;
+    }
     b.dataset.popping = '1';
     var body = b.querySelector('.bl-body');
     var r = body.getBoundingClientRect();
@@ -1002,18 +1041,17 @@
           );
         }
       }
-      var card = $('#bl-card');
-      card.classList.remove('pop');
-      void card.offsetWidth;
-      card.textContent = b.dataset.msg;
-      card.classList.add('pop');
+      showCard(b.dataset.msg);
       popped++;
       $('#bl-count').textContent = popped + ' / 7 files khuli 🎈';
       if(popped===7){
         setTimeout(function(){
-          burst(innerWidth/2, innerHeight*0.35, 50);
-          $('#cta-balloons').classList.add('show');
-        }, 500);
+          burst(innerWidth/2, innerHeight*0.35, 70);
+          var st = $('#leakstamp');
+          if(st) st.classList.add('slam2');
+          buzz([50,60,100]);
+          setTimeout(function(){ $('#cta-balloons').classList.add('show'); }, 900);
+        }, 450);
       }
     };
     var bb = b.querySelector('.bl-body');
@@ -1022,7 +1060,11 @@
       setTimeout(doPop, 70);
     } else { doPop(); }
   }
-  $('#cta-balloons').addEventListener('click', function(){ goTo(3, playCert); });
+  $('#cta-balloons').addEventListener('click', function(){
+    var st = $('#leakstamp');
+    if(st) st.style.display = 'none';
+    goTo(3, playCert);
+  });
 
   /* ================= ACT 4 : CERTIFICATE ================= */
   var certPlayed = false;
