@@ -393,6 +393,24 @@
   #ocean i::before{content:'';position:absolute;top:-11px;left:-4px;width:18px;height:18px;border-radius:50%;
                    background:radial-gradient(circle at 35% 30%,#fff,#C084FC 45%,#8B3DF0)}
   @keyframes osway{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  #player{display:flex;align-items:center;gap:14px;width:min(340px,86vw);margin:24px auto 0;padding:12px 16px;
+    border-radius:18px;border:1px solid transparent;
+    background:linear-gradient(rgba(255,255,255,.07),rgba(255,255,255,.03)) padding-box,
+               linear-gradient(160deg,rgba(233,213,255,.5),rgba(168,85,247,.15) 45%,rgba(168,85,247,.35)) border-box;
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.6);opacity:0;transition:opacity .8s ease}
+  #player.in{opacity:1}
+  #play-btn{flex:0 0 auto;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;font-size:19px;color:#FBF7FF;
+    background:linear-gradient(135deg,#7C3AED,#D946EF);
+    box-shadow:0 8px 22px -8px rgba(168,85,247,.7),inset 0 1px 0 rgba(255,255,255,.35)}
+  #pl-meta{flex:1;text-align:left}
+  #pl-title{font-weight:900;font-size:16px;letter-spacing:.04em}
+  #pl-sub{font-size:11.5px;color:var(--dim);margin:2px 0 8px}
+  #pl-bar{height:5px;border-radius:99px;background:rgba(196,181,253,.18);overflow:hidden}
+  #pl-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#A855F7,#FDE68A)}
+  .chant{position:fixed;font-weight:900;color:#C4B5FD;font-size:20px;pointer-events:none;z-index:44;
+    animation:chantup 1.3s ease-out forwards;text-shadow:0 2px 12px rgba(124,58,237,.6)}
+  @keyframes chantup{0%{opacity:0;transform:translate(0,0) scale(.7)}15%{opacity:1}
+    100%{opacity:0;transform:translate(var(--cx,0),-110px) scale(1.2)}}
   #replay{margin-top:30px}
   #made{font-size:11px;color:var(--dim);opacity:.7;margin-top:26px;letter-spacing:.06em}
 
@@ -595,6 +613,15 @@
   <p class="fin-line" id="fin1">Tumhare liye is naye saal ka theme song: <b>Yet to Come 💜</b></p>
   <p class="fin-line" id="fin2"><b>Apobangpo.</b> ARMY forever, Bangtan forever. Aur haan, Tanvi forever bhi.</p>
   <p id="borahae-note">Borahae ka matlab pata hai na? V ne 13 November 2016 ko kaha tha: purple rainbow ka aakhri color hai. Matlab aakhri tak trust, aakhri tak pyaar. Toh... Borahae, Tanvi. 💜</p>
+  <div id="player">
+    <button id="play-btn" class="pressable" aria-label="Song play karo">▶</button>
+    <div id="pl-meta">
+      <div id="pl-title">TANVI DAY</div>
+      <div id="pl-sub">Official Debut Single · Duniya mein sirf ek copy</div>
+      <div id="pl-bar"><div id="pl-fill"></div></div>
+    </div>
+  </div>
+  <audio id="song" preload="none" src="tanvi-day.mp3"></audio>
   <button class="cta pressable" id="replay">Ek baar aur? 🔁</button>
   <div id="made">MADE WITH 💜 · SIRF TANVI KE LIYE · 27.08</div>
   <div id="ocean" aria-hidden="true"></div>
@@ -1254,7 +1281,49 @@
       $('#heartrain').classList.add('on');
       $('#replay').classList.add('show');
     }, 2800);
+    setTimeout(function(){
+      var p = $('#player');
+      if(p) p.classList.add('in');
+    }, 3300);
   }
+  /* ---------- song player ---------- */
+  (function(){
+    var audio = $('#song'), btn = $('#play-btn'), fill = $('#pl-fill'), player = $('#player');
+    if(!audio || !btn) return;
+    audio.addEventListener('error', function(){ if(player) player.style.display = 'none'; });
+    btn.addEventListener('click', function(){
+      if(audio.paused){
+        var pr = audio.play();
+        if(pr && pr.catch) pr.catch(function(){});
+        btn.textContent = '❚❚';
+      } else {
+        audio.pause();
+        btn.textContent = '▶';
+      }
+    });
+    audio.addEventListener('timeupdate', function(){
+      if(audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    });
+    audio.addEventListener('ended', function(){ btn.textContent = '▶'; fill.style.width = '0%'; });
+  })();
+  /* ---------- fan chant: finale pe kahin bhi tap ---------- */
+  var chantN = 0;
+  var CHANTS = ['TANVI!', '💜', '🔦', 'TANVI!', '⁷'];
+  $('#act-finale').addEventListener('pointerdown', function(e){
+    if(e.target.closest('button') || e.target.closest('#player')) return;
+    for(var i=0;i<3;i++){
+      var s = document.createElement('span');
+      s.className = 'chant';
+      s.textContent = CHANTS[(chantN++) % CHANTS.length];
+      s.style.left = (e.clientX - 24 + Math.random()*48) + 'px';
+      s.style.top = (e.clientY - 12) + 'px';
+      s.style.setProperty('--cx', ((Math.random()*90)-45).toFixed(0) + 'px');
+      s.style.animationDelay = (i*0.07)+'s';
+      s.addEventListener('animationend', function(){ this.remove(); });
+      document.body.appendChild(s);
+    }
+    buzz(10);
+  });
   (function buildOcean(){
     var o = $('#ocean');
     for(var i=0;i<11;i++){
